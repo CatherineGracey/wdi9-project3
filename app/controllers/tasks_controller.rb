@@ -17,4 +17,9 @@ class TasksController < ApplicationController
       render json: {error: "Task has failed to save."}
     end
   end
+
+  def show
+    @task = Task.find params[:id]
+    render json: @task
+  end
 end
