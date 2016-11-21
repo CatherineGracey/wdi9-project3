@@ -3,6 +3,7 @@ class TasksController < ApplicationController
     @tasks = Task.all
     render json: @tasks
   end
+  
   def create
     task = Task.new
     task.title = params[:title]
@@ -19,7 +20,11 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = Task.find params[:id]
-    render json: @task
+    if Task.exists? params[:id]
+      @task = Task.find params[:id]
+      render json: @task
+    else
+      render json: {error: "ID does not exist"}
+    end
   end
 end
