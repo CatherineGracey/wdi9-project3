@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161122084441) do
+ActiveRecord::Schema.define(version: 20161122085815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,32 @@ ActiveRecord::Schema.define(version: 20161122084441) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_companies_on_user_id", using: :btree
+  end
+
+  create_table "job_statuses", force: :cascade do |t|
+    t.string   "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "job_status_id"
+    t.integer  "company_id"
+    t.text     "pros"
+    t.text     "cons"
+    t.datetime "date_applied"
+    t.string   "contact_name"
+    t.string   "contact_phone"
+    t.string   "contact_email"
+    t.string   "location"
+    t.string   "salary"
+    t.text     "notes"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["company_id"], name: "index_jobs_on_company_id", using: :btree
+    t.index ["job_status_id"], name: "index_jobs_on_job_status_id", using: :btree
+    t.index ["user_id"], name: "index_jobs_on_user_id", using: :btree
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -50,5 +76,8 @@ ActiveRecord::Schema.define(version: 20161122084441) do
   end
 
   add_foreign_key "companies", "users"
+  add_foreign_key "jobs", "companies"
+  add_foreign_key "jobs", "job_statuses"
+  add_foreign_key "jobs", "users"
   add_foreign_key "tasks", "users"
 end
