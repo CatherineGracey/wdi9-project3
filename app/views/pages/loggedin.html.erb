@@ -1,4 +1,10 @@
-<div id="root"></div>
+<div id="root">TEST</div>
+
+<form action="/logout" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+  <button>logout</button>
+</form>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
 <script src="http://underscorejs.org/underscore-min.js"></script>
