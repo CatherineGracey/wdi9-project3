@@ -31,4 +31,10 @@ class TasksController < ApplicationController
       render json: {error: "ID does not exist"}
     end
   end
+
+  def update
+  end
+
+  def destroy
+  end
 end
