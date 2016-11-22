@@ -5,7 +5,7 @@
     <form class="text" action="/login" method="post">
 
       <h3>Login</h3>
-
+          <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
           <p id="input-title">Email</p>
           <input type="text" type="submit" name="email" placeholder="email">
 
@@ -15,4 +15,8 @@
       <button>Login</button>
 
     </form>
+
+
+   
+
 </div>

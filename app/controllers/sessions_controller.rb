@@ -1,11 +1,14 @@
 class SessionsController < ApplicationController
   def new
+    # binding.pry
     
   end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
+    # binding.pry
+    user = User.find_by(email: params[:email].downcase)
+
+    if user && user.authenticate(params[:password])
       log_in user
       redirect_to user
       # redirect_to current_user
