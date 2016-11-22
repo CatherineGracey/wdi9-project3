@@ -22,6 +22,8 @@ gem 'jquery-rails'
 gem 'rails-backbone'
 # Underscore (for backbone)
 gem 'underscore-rails', '~> 1.8', '>= 1.8.3'
+# Compile handlebars templates
+gem 'handlebars_assets', '~> 0.23.1'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
