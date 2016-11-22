@@ -17,4 +17,6 @@
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require backbone/jobsearcher
+//= require turbolinks
+//= require materialize-sprockets
 //= require_tree .
