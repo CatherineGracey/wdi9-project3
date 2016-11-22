@@ -1,19 +1,14 @@
 var NewTaskView = Backbone.View.extend({
 
   events: {
-    'click': 'saveNewTask'
+    // 'click': 'saveNewTask'
   },
 
-  // template: Handlebars.compile($('#item-template').html()),
+  template: HandlebarsTemplates['new_task'],
 
   render: function() {
-    var html = this.template(this.model.toJSON());
+    var html = this.template();
     this.$el.html(html);
-    if (this.model.get('selected')) {
-      this.$el.addClass('clicked');
-    } else {
-      this.$el.removeClass('clicked');
-    }
     return this;
   },
 
