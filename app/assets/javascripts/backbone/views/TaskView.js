@@ -2,13 +2,13 @@
 // Task Item
 var TaskView = Backbone.View.extend({
 
-  className: '',
+  className: 'task',
 
   events: {
     'click': 'showDetails'
   },
 
-  template: HandlebarsTemplates['task_list_item'],
+  template: HandlebarsTemplates['task'],
 
   initialize: function() {
     // listen to change event on model
