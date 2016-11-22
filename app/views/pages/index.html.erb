@@ -1,20 +1,35 @@
 
-<div class="login-container">
+<body>
+      <div class="container">
+        <!-- Page Content goes here -->
+        <div class="row">
 
-  <div class="login-box">
-    <form class="text" action="/login" method="post">
+          <h3>Login or Sign Up</h3>
 
-      <h3>Login</h3>
+          <form class="" action="/login" method="post">
 
-          <p id="input-title">Email</p>
-          <input type="text" type="submit" name="email" placeholder="email">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="email" type="email" class="validate" name="email">
+                <label for="email">Email</label>
+              </div>
+            </div>
 
-          <p id="input-title">Password</p>
-          <input type="password" type="submit" name="password" placeholder="password">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="password" type="password" class="validate" name="password">
+                <label for="password">Password</label>
+              </div>
+            </div>
 
-      <button>Login</button>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+              <i class="material-icons right"></i>
+            </button>
 
-    </form>
-  </div>
+          </form>
+
+      </div>
+    </body>
+
 
 </div>
