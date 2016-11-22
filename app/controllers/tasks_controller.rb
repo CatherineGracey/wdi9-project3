@@ -37,4 +37,15 @@ class TasksController < ApplicationController
 
   def destroy
   end
+
+  def complete
+    task = Task.find params[:id]
+    if task.complete
+      task.complete = nil
+      task.completed_on = nil
+    else
+      task.complete = true
+      task.completed_on = Time.now
+    end
+  end
 end
