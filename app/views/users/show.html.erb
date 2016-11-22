@@ -1,0 +1,4 @@
+<h1><%= current_user.email %></h1>
+
+<%= link_to 'LOGOUT', logout_path, method: :delete, 
+    data: { confirm: 'Are you sure you want to logout?' } %>
