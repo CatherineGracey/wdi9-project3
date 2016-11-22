@@ -12,4 +12,16 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require underscore
+//= require backbone
+//= require backbone_rails_sync
+//= require backbone_datalink
+//= require backbone/jobsearcher
+//= require turbolinks
+//= require materialize-sprockets
+//= require underscore
+//= require backbone
+//= require backbone_rails_sync
+//= require backbone_datalink
+//= require backbone/jobsearcher
 //= require_tree .
