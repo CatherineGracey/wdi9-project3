@@ -23,6 +23,6 @@ var NewTaskView = Backbone.View.extend({
       }
     }
     $.ajax(options)
-    // TODO: clear form and draw detailed task view?
+    taskCollection.add(options.data);
   }
 });
