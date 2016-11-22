@@ -1,7 +1,7 @@
 var NewTaskView = Backbone.View.extend({
 
   events: {
-    // 'click': 'saveNewTask'
+    'click #submit-new-task': 'saveNewTask'
   },
 
   template: HandlebarsTemplates['new_task'],
@@ -13,6 +13,16 @@ var NewTaskView = Backbone.View.extend({
   },
 
   saveNewTask: function() {
+    var options = {
+      url: '/task',
+      method: 'post',
+      data: {
+        title: $('input[name="title"]').val(),
+        desc: $('input[name="desc"]').val(),
+        due: $('input[name="due"]').val(),
+      }
+    }
+    $.ajax(options)
+    // TODO: clear form and draw detailed task view?
   }
-
 });

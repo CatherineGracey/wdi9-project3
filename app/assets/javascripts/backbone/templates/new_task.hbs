@@ -1,24 +1,21 @@
-<form action="/task" method="post">
-  <!--<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>-->
-  <div class="row">
-    <div class="input-field col s12">
-      <input type="text" name="title" value="" placeholder="title">
-      <label for="title">Enter a short description of this task.</label>
-    </div>
+<div class="row">
+  <div class="input-field col s12">
+    <input type="text" name="title" value="" placeholder="title">
+    <label for="title">Enter a short description of this task.</label>
   </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <textarea name="desc"></textarea>
-      <label for="desc">Enter a detailed description and notes for this task.</label>
-    </div>
+</div>
+<div class="row">
+  <div class="input-field col s12">
+    <input type="text" value="" placeholder="description" name="desc">
+    <label for="desc">Enter a detailed description and notes for this task.</label>
   </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <input type="date" name="due">
-      <label for="date">When is this task due?</label>
-    </div>
+</div>
+<div class="row">
+  <div class="input-field col s12">
+    <input type="date" class="datepicker">
+    <label>When is this task due?</label>
   </div>
-  <button class="btn waves-effect waves-light" type="submit" name="action">Save
-    <i class="material-icons right"></i>
-  </button>
-</form>
+</div>
+<button id="submit-new-task" class="btn waves-effect waves-light" type="submit" name="action">Save
+  <i class="material-icons right"></i>
+</button>
