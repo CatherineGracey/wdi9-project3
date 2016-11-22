@@ -2,7 +2,7 @@
 // Task Item
 var TaskView = Backbone.View.extend({
 
-  className: 'task',
+  className: 'task-item',
 
   events: {
     'click': 'showDetails'
@@ -11,22 +11,28 @@ var TaskView = Backbone.View.extend({
   template: HandlebarsTemplates['task'],
 
   initialize: function() {
-    // listen to change event on model
-    // when the model change call this.render
-    this.listenTo(this.model, 'change:complete', this.render);
+    // listen to change event on collection
+    // when the model change call this.addOne
+    this.listenTo(this.collection, 'add', this.addOne);
   },
 
   render: function() {
-
-    var html = this.template(this.model);
-    this.$el.html(html);
+    // append each model from collection to html el
+    this.collection.each(function(model) {
+      var html = this.template(model.toJSON());
+      this.$el.append(html);
+    }, this)
 
     return this;
   },
 
   showDetails: function() {
-  //   display details of this view in detail div;
-  // console.log('Details: ' + this.model.get('desc'))
+  // display details of this view in detail div;
+  },
+
+  addOne: function(model) {
+    var html = this.template(model.toJSON());
+    this.$el.append(html);
   }
 
 });
