@@ -1,4 +1,9 @@
 var view = new NewTaskView();
-$(document).ready(function() {
-  $('.task-detail').html(view.render().el);
-})
+
+$().ready(function() {
+  
+  $('#new-task').click(function() {
+    $('.task-detail').html(view.render().el);
+  });
+
+});
