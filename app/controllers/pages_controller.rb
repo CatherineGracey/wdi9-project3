@@ -1,6 +1,9 @@
 class PagesController < ApplicationController
   def index
-  end
-  def loggedin
+    if session[:user_id]
+      render :loggedin
+    else
+      render :index
+    end  
   end
 end
