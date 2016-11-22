@@ -1,4 +1,12 @@
+
 var view = new NewTaskView();
+
+// Create Collection of Tasks
+var taskCollection = new TaskCollection();
+
+var taskView = new TaskView({
+  collection: taskCollection
+});
 
 $().ready(function() {
 
@@ -6,11 +14,9 @@ $().ready(function() {
     $('.task-detail').html(view.render().el);
   });
 
-  // Create Collection of Tasks
-  var view = new TaskListView({
-    collection: tasks
-  });
   // Append rendered Task collection
-  $('.task-list').append(view.render().el);
-
+  taskCollection.fetch().done(function(result){
+    console.log(result);
+    $('.task-list').append(taskView.render().el);
+  });
 });

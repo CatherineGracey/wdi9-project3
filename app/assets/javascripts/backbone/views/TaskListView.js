@@ -1,19 +1,29 @@
 
-var ListView = Backbone.View.extend({
+// ------ TESTING: IGNORE THIS FOR NOW -------
 
-  tagName: 'div',
-  className: 'list',
+// Task Collection
 
-  render: function() {
-    console.log(this.collection)
-
-    // var listView = this;
-    this.collection.each(function(item) {
-      var view = new ListItemView({ model: item });
-      this.$el.append( view.render().el )
-    }, this);
-
-    return this;
-  }
-
-});
+// var TaskListView = Backbone.View.extend({
+//
+//   className: '',
+//
+//   initialize: function() {
+//     // listen to change event on model
+//     // when the model change call this.render
+//     this.listenTo(this.collection, 'change:title', this.render);
+//   },
+//
+//   render: function() {
+//     console.log(this.collection)
+//
+//     this.collection.each(function(item) {
+//       var view = new TaskView({
+//         model: item
+//       });
+//       this.$el.append( view.render().el )
+//     }, this);
+//
+//     return this;
+//   }
+//
+// });

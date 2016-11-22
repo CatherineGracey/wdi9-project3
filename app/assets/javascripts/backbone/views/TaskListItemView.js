@@ -1,5 +1,8 @@
 
-var TaskListItemView = Backbone.View.extend({
+// Task Item
+var TaskView = Backbone.View.extend({
+
+  className: '',
 
   events: {
     'click': 'showDetails'
@@ -10,21 +13,20 @@ var TaskListItemView = Backbone.View.extend({
   initialize: function() {
     // listen to change event on model
     // when the model change call this.render
-    this.listenTo(this.model, 'change:title', this.render);
+    this.listenTo(this.model, 'change:complete', this.render);
   },
 
   render: function() {
 
-    var html = this.template(this.model.toJSON());
+    var html = this.template(this.model);
     this.$el.html(html);
 
     return this;
   },
 
-  showDetails:
-  // function() {
-  //   display details of this view to detail div;
-  // }
-  console.log('Details: ' + this.model.get('desc'));
+  showDetails: function() {
+  //   display details of this view in detail div;
+  // console.log('Details: ' + this.model.get('desc'))
+  }
 
 });
