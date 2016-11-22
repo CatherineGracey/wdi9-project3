@@ -11,13 +11,19 @@ body {
   margin: 0;
 }
 
-/*.hidden-div {
+.root {
   position: relative;
-  top: -10px;
+}
+
+.hidden-div {
+  display: hidden;
+  position: absolute;
+  z-index: 999;
+  top: 20em;
   width: 80%;
-  height: 80%;
+  height: 80vh;
   background-color: black;
-}*/
+}
 
 .task-container {
   width: 100%;
