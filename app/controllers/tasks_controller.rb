@@ -3,19 +3,23 @@ class TasksController < ApplicationController
     tasks = Task.all
     render json: tasks
   end
-  
+
   def create
-    task = Task.new
-    task.title = params[:title]
-    task.desc = params[:desc]
-    task.due = params[:due]
-    task.complete = false
-    # Check this once log in has been written
-    task.user = session[:user_id]
-    if task.save
-      render json: task
+    if session[:user_id]
+      task = Task.new
+      task.title = params[:title]
+      task.desc = params[:desc]
+      task.due = params[:due]
+      task.complete = false
+      # Check this once log in has been written
+      task.user_id = session[:user_id]
+      if task.save
+        render json: task
+      else
+        render json: {error: "Task has failed to save."}
+      end
     else
-      render json: {error: "Task has failed to save."}
+      redirect_to '/'
     end
   end
 
