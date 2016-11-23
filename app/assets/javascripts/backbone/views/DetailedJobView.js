@@ -11,8 +11,8 @@ var DetailedJobView = Backbone.View.extend({
     var html = this.template(this.model);
     this.$el.html(html);
     this.collection.each(function(model){
-      var taskView = new TaskView({model: model});
-      this.$el.find('#tasks-snapshot').append(taskView.render().el);
+      var jobView = new JobView({model: model});
+      this.$el.find('#tasks-snapshot').append(jobView.render().el);
     }, this);
     return this;
   },
