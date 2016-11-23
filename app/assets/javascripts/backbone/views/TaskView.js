@@ -2,7 +2,9 @@
 // Task Item
 var TaskView = Backbone.View.extend({
 
-  className: 'task-item-list',
+  tagName: 'div',
+
+  className: 'collection',
 
   events: {
     'click h6': 'showDetails'
