@@ -1,2 +1,1 @@
-var Job = Backbone.Model.extend({
-});
+var Job = Backbone.Model.extend({});

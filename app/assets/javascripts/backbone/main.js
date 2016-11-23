@@ -3,12 +3,9 @@ var taskCollection = new TaskCollection();
 var companyCollection = new CompanyCollection();
 var jobCollection = new JobCollection();
 
-var taskListView = new TaskListView({
-  collection: taskCollection });
-var companyListView = new CompanyListView({
-  collection: companyCollection });
-var jobListView = new JobListView({
-  collection: jobCollection });
+var taskListView = new TaskListView({ collection: taskCollection });
+var companyListView = new CompanyListView({ collection: companyCollection });
+var jobListView = new JobListView({ collection: jobCollection });
 
 $().ready(function() {
 
@@ -60,38 +57,36 @@ $().ready(function() {
     }
   });
 
-  // Populate task collection with AJAX call
+  // Populate collections with AJAX call
   taskCollection.fetch()
+  companyCollection.fetch()
+  jobCollection.fetch()
   $('.task-list-container').html(taskListView.el);
 
   // Navigation tab click handlers:
   $('#jobs-tab').click(function() {
-    jobCollection.fetch()
-    $('.task-list-container').html(jobListView.el);
+    $('.task-list-container').html(jobListView.render().el);
     // Display add job button
     $('#new-job').fadeIn();
     $('#new-task').hide();
     $('#new-company').hide();
-  });
+  })
 
   $('#tasks-tab').click(function() {
-    // Populate task collection with AJAX call
-    taskCollection.fetch()
-    $('.task-list-container').html(taskListView.el);
+    $('.task-list-container').html(taskListView.render().el);
     // Display add task button
     $('#new-task').fadeIn();
     $('#new-job').hide();
     $('#new-company').hide();
-  });
+  })
 
   $('#companies-tab').click(function() {
-    companyCollection.fetch()
-    $('.task-list-container').html(companyListView.el);
+    $('.task-list-container').html(companyListView.render().el);
     // Display add task button
     $('#new-company').fadeIn();
     $('#new-job').hide();
     $('#new-task').hide();
-  });
+  })
 
   // Make logout link submit logout form
   $('#logout-link').click(function() {
