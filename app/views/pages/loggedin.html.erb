@@ -14,7 +14,7 @@
           <button id="new-task" class="btn waves-effect waves-light" type="submit" name="action">Task +
           </button>
 
-          <ul class="right">
+          <ul class="right hide-on-med-and-down">
 
             <li>
               <i class="material-icons">search</i>
@@ -26,11 +26,8 @@
 
             <li></li>
             <li><a href="#">A Link</a></li>
-            <%#<li> <!-- logout button -->%>
-              <%#<form action="/logout" method="post">%>
-            <li> <!-- logout -->
-              <form id='logout' action="/logout" method="post">
-
+            <li> <!-- logout button -->
+              <form action="/logout" method="post" id="logout">
                 <input type="hidden" name="_method" value="delete">
                 <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
                 <a id="logout-link">Log out</a>
