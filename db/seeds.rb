@@ -23,6 +23,16 @@ u.password = "pudding"
 u.username = "DT"
 u.save
 
+c1 = Company.new
+c1.name = "Google"
+c1.website = "www.google.com"
+c1.pros = "It's Google!"
+c1.cons = "It's in a different city"
+c1.size = "61,814 people"
+c1.type = "Search engine and paid advertising provider"
+c1.industry = "IT"
+c1.user_id = User.last
+
 t1 = Task.new
 t1.title = "Apply to Google"
 t1.desc = "Send an application to the Google office in Sydney for a senior web developer role."
