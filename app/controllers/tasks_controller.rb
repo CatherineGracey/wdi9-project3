@@ -15,8 +15,13 @@ class TasksController < ApplicationController
       task.desc = params[:desc]
       task.due = params[:due]
       task.complete = false
-      # Check this once log in has been written
       task.user_id = session[:user_id]
+      if params[:company]
+        task.company = Company.find(params[:company])
+      end
+      if params[:job]
+        task.job = Jobs.find(params[:job])
+      end
       if task.save
         render json: task
       else
@@ -30,16 +35,48 @@ class TasksController < ApplicationController
   def show
     if Task.exists? params[:id]
       task = Task.find params[:id]
-      render json: task
+      if task.user_id == session[:user_id]
+        render json: task
+      else
+        render json: {error: "ID is assigned to a different user."}
+      end
     else
       render json: {error: "ID does not exist"}
     end
   end
 
   def update
+    if Task.exists? params[:id]
+      task = Task.find params[:id]
+      if task.user_id == session[:user_id]
+        task.title = params[:title]
+        task.desc = params[:desc]
+        task.due = params[:due]
+        task.complete = params[:complete]
+        task.completed_on = params[:completed_on]
+        task.company = Company.find(params[:company])
+        task.job = Jobs.find(params[:job])
+        if task.save
+          render json: task
+        else
+          render json: {error: "Task has failed to save."}
+        end
+        render json: task
+      else
+        render json: {error: "ID is assigned to a different user."}
+      end
+    else
+      render json: {error: "ID does not exist"}
+    end
   end
 
   def destroy
+    if Task.exists? params[:id]
+      task = Task.find params[:id]
+      if task.user_id == session[:user_id]
+        task.destroy
+      end
+    end
   end
 
   def complete
