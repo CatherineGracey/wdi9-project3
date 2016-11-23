@@ -18,8 +18,8 @@ var TaskView = Backbone.View.extend({
     var detailedTaskView = new DetailedTaskView({model: this.model})
     $('.task-detail').html(detailedTaskView.render().el);
     // Make Task display 'active'
-    $('.collection-item').removeClass('active');
-    $('event.target').addClass('active');
+    $('.task-list a').removeClass('active');
+    this.$el.find('a').addClass('active');
 
   },
 

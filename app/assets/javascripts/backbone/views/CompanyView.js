@@ -1,6 +1,6 @@
 var CompanyView = Backbone.View.extend({
 
-  className: 'collection-item',
+  className: 'task-summary',
 
   events: {
     'click a': 'showDetails'
@@ -17,6 +17,11 @@ var CompanyView = Backbone.View.extend({
   showDetails: function() {
     var detailedCompanyView = new DetailedCompanyView({model: this.model})
     $('.task-detail').html(detailedCompanyView.render().el);
+
+    // Make Task display 'active'
+    $('.task-list a').removeClass('active');
+    this.$el.find('a').addClass('active');
+
   },
 
 });
