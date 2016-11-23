@@ -17,13 +17,21 @@ body {
 
 .hidden-div {
   display: none;
-  position: absolute;
+  position: fixed;
   z-index: 999;
-  top: 0;
-  right: 0;
+  top: 50%;
+  left: 50%;
   width: 80%;
   height: 80vh;
-  background-color: white;
+  margin-left: -40%;
+  margin-top: -40vh;
+
+  background-color: mistyrose;
+  border-radius: 3%;
+
+  -webkit-box-shadow: 10px 7px 24px -2px rgba(133,133,133,0.55);
+  -moz-box-shadow: 10px 7px 24px -2px rgba(133,133,133,0.55);
+  box-shadow: 10px 7px 24px -2px rgba(133,133,133,0.55);
 }
 
 .task-container {
