@@ -1,7 +1,11 @@
 class TasksController < ApplicationController
   def all
-    tasks = Task.all
-    render json: tasks
+    if session[:user_id]
+      tasks = User.find(session[:user_id]).tasks
+      render json: tasks
+    else
+      redirect_to '/'
+    end
   end
 
   def create
@@ -36,5 +40,16 @@ class TasksController < ApplicationController
   end
 
   def destroy
+  end
+
+  def complete
+    task = Task.find params[:id]
+    if task.complete
+      task.complete = nil
+      task.completed_on = nil
+    else
+      task.complete = true
+      task.completed_on = Time.now
+    end
   end
 end

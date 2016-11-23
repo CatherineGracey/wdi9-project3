@@ -6,6 +6,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+JobStatus.destroy_all
+JobStatus.create category: "Not yet applied"
+JobStatus.create category: "Applied"
+JobStatus.create category: "Pending interview"
+JobStatus.create category: "Contract negotiation"
+JobStatus.create category: "Rejected"
+JobStatus.create category: "Withdrawn"
+JobStatus.create category: "Company needs information"
+JobStatus.create category: "Waiting for company to provide information"
+JobStatus.create category: "Other"
+
 u = User.new
 u.email = "dt@ga.co"
 u.password = "pudding"

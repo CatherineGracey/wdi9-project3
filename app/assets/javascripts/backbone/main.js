@@ -1,9 +1,5 @@
-
-var view = new NewTaskView();
-
 // Create Collection of Tasks
 var taskCollection = new TaskCollection();
-
 
 var taskView = new TaskView({
   collection: taskCollection
@@ -12,14 +8,16 @@ var taskView = new TaskView({
 $().ready(function() {
 
   $('#new-task').click(function() {
+    var view = new NewTaskView();
     $('.task-detail').html(view.render().el);
     $('.datepicker').pickadate({
-      selectMonths: true, // Creates a dropdown to control month
-      selectYears: 15 // Creates a dropdown of 15 years to control year
+      selectMonths: true,
+      selectYears: 15
     });
   });
 
   taskCollection.fetch()
 
-    $('.task-list').append(taskView.render().el);
+  $('.task-list').append(taskView.render().el);
+
 });
