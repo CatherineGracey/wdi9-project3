@@ -21,6 +21,7 @@ var JobView = Backbone.View.extend({
     // Make Task display 'active'
     $('.task-list a').removeClass('active');
     this.$el.find('a').addClass('active');
+    window.scrollTo(0, 0);
 
   },
 
