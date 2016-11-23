@@ -1,9 +1,11 @@
 // Create Collections and list views
 var taskCollection = new TaskCollection();
 var companyCollection = new CompanyCollection();
+var jobCollection = new JobCollection();
 
 var taskListView = new TaskListView({ collection: taskCollection });
 var companyListView = new CompanyListView({ collection: companyCollection });
+var jobListView = new JobListView({ collection: jobCollection });
 
 $().ready(function() {
 
@@ -40,11 +42,20 @@ $().ready(function() {
   
   // Populate task collection with AJAX call
   taskCollection.fetch()
+  companyCollection.fetch()
+  jobCollection.fetch()
   $('.task-list-container').html(taskListView.el);
 
   // Navigation tab click handlers:
   $('#jobs-tab').click(function() {
-    companyCollection.fetch()
+    $('.task-list-container').html(jobListView.el);
+  })
+
+  $('#tasks-tab').click(function() {
+    $('.task-list-container').html(taskListView.el);
+  })
+
+  $('#companies-tab').click(function() {
     $('.task-list-container').html(companyListView.el);
   })
 
