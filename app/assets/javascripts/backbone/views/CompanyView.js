@@ -1,4 +1,4 @@
-var TaskView = Backbone.View.extend({
+var CompanyView = Backbone.View.extend({
 
   className: 'collection-item',
 
