@@ -2,9 +2,9 @@
 <div class="root">
 
 
-  <!-- <div class="hidden-div"> -->
+  <div class="hidden-div">
   <!-- Add task and history goes here (maybe?) -->
-  <!-- </div> -->
+  </div>
 
   <div class="navbar-fixed">
     <nav>
@@ -14,7 +14,15 @@
                   type="submit" name="action">Task +
           </button>
           <ul class="right hide-on-med-and-down">
-            <li><a href="#">A link</a></li>
+
+            <li>
+              <i class="material-icons">search</i>
+            </li>
+
+            <li class="search">
+              <input id="search search-task">
+            </li>
+
             <li> <!-- logout button -->
               <form action="/logout" method="post">
                 <input type="hidden" name="_method" value="delete">
@@ -23,6 +31,7 @@
                 </button>
               </form>
             </li> <!-- logout button end -->
+
           </ul>
         </div>
       </nav>
