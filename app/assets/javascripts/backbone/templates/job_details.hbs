@@ -1,7 +1,7 @@
 
 <div class="container" id="container-top-padding">
 
-  <h1>{{title}} and {{company.name}}</h1>
+  <h1>{{title}} at {{company_name}}</h1>
 
   <h2>Tasks</h2>
   <ul class="collection" id="tasks-snapshot">
@@ -9,7 +9,7 @@
   </ul>
 
   <p><span>Applied:</span> {{#if date_applied}}{{date_applied}}{{else}}Not Applied{{/if}}
-    <br><span>Status:</span> {{job_status.content}}
+    <br><span>Status:</span> {{job_status_category}}
   </p>
   <p><span>Contact:</span>
     <i class="material-icons">phone</i> {{contact_phone}}
