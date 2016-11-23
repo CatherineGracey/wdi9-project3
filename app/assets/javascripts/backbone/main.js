@@ -20,6 +20,30 @@ $().ready(function() {
     $('.hidden-div').fadeIn("slow");
   });
 
+  $('#search-task').val("Search");
+  
+  $('#search-task').focus(function() {
+    $(this).val("");
+  });
+
+  $('#search-task').focusout(function() {
+      $(this).val("Search");
+  });
+
+  $('#search-task').bind('keypress', function(e) {
+    if (e.keyCode == 13) {
+      var searchResult = taskCollection.where({ title: $(this).val() });
+      $(this).val("");
+      console.log(searchResult);
+      var searchResultCollection = new TaskCollection(searchResult)
+      var view = new TaskListView({collection: searchResultCollection});
+      $('.hidden-div').html(view.render().el);
+      $('.hidden-div').fadeIn('slow');
+      // debugger
+    }
+  });
+  
+
   // Populate task collection with AJAX call
   taskCollection.fetch()
 
