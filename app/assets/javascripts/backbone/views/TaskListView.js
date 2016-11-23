@@ -1,29 +1,20 @@
+var TaskListView = Backbone.View.extend({
 
-// ------ TESTING: IGNORE THIS FOR NOW -------
+  className: 'collection',
 
-// Task Collection
+  initialize: function() {
+    this.listenTo(this.collection, 'add', this.addOne);
+  },
 
-// var TaskListView = Backbone.View.extend({
-//
-//   className: '',
-//
-//   initialize: function() {
-//     // listen to change event on model
-//     // when the model change call this.render
-//     this.listenTo(this.collection, 'change:title', this.render);
-//   },
-//
-//   render: function() {
-//     console.log(this.collection)
-//
-//     this.collection.each(function(item) {
-//       var view = new TaskView({
-//         model: item
-//       });
-//       this.$el.append( view.render().el )
-//     }, this);
-//
-//     return this;
-//   }
-//
-// });
+  addOne: function(model) {
+    var pos = taskCollection.indexOf(model);
+    var view = new TaskView({model: model});
+    var html = view.render().el;
+    if (this.$el.find('.task-summary').length === 0) {
+      this.$el.append(html);
+    } else {
+      this.$el.find('.task-summary').eq(pos - 1).after(html);
+    }
+  }
+
+});
