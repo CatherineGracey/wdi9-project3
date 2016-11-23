@@ -8,14 +8,19 @@ var taskView = new TaskView({
 $().ready(function() {
 
   $('#new-task').click(function() {
+
+    // Render new task form, append to hidden-div
     var view = new NewTaskView();
-    $('.task-detail').html(view.render().el);
+    $('.hidden-div').html(view.render().el);
     $('.datepicker').pickadate({
       selectMonths: true,
       selectYears: 15
     });
+    // Reveal hidden-div
+    $('.hidden-div').fadeIn("slow");
   });
 
+  // Populate task collection with AJAX call
   taskCollection.fetch()
 
   $('.task-list').append(taskView.render().el);
