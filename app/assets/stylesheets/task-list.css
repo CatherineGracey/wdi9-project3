@@ -90,3 +90,7 @@ body {
   bottom: 2em;
   left: 2em;
 }
+
+#container-top-padding {
+  padding-top: .1em;
+}
