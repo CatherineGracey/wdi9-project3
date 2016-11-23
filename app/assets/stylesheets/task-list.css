@@ -43,3 +43,13 @@ body {
   width: 70%;
   margin-left: 30%;
 }
+
+.task-item {
+  transition: background-color 0.5s ease;  padding-top: .5em;
+  padding-bottom: .5em;
+  padding-left: .5em;
+}
+
+.task-item:hover {
+  background-color: grey;
+}

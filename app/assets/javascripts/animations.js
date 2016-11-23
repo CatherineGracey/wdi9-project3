@@ -2,7 +2,7 @@
 
 $(document).ready(function() {
 
-  $('.nav-wrapper').on('click', '.btn', function(){
+  $('new-task').on('click', function(){
 
     $('.hidden-div').animate({
       opacity: 1,
