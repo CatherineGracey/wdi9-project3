@@ -1,7 +1,11 @@
 class TasksController < ApplicationController
   def all
-    tasks = Task.all
-    render json: tasks
+    if session[:user_id]
+      tasks = User.find(session[:user_id]).tasks.order(due: :desc)
+      render json: tasks
+    else
+      redirect_to '/'
+    end
   end
 
   def create
