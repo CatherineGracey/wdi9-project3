@@ -1,21 +1,33 @@
-<div class="row">
-  <div class="input-field col s12">
-    <input type="text" name="title" value="" placeholder="title">
-    <label for="title">Enter a short description of this task.</label>
+<div class="container">
+
+    <h3 id="new-task-title">New Task</h3>
+
+    <i class="medium material-icons" id="close">clear</i>
+
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="text" name="title" value="" placeholder="title">
+      <label for="title">Enter a short description of this task.</label>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="input-field col s12">
-    <input type="text" value="" placeholder="description" name="desc">
-    <label for="desc">Enter a detailed description and notes for this task.</label>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="text" value="" placeholder="description" name="desc">
+      <label for="desc">Enter a detailed description and notes for this task.</label>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="input-field col s12">
-    <input name="due" type="date" class="datepicker">
-    <label>When is this task due?</label>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input name="due" type="date" class="datepicker">
+      <label>When is this task due?</label>
+    </div>
   </div>
+
+  <button id="submit-new-task" class="btn waves-effect waves-light" type="submit" name="action">Save
+  </button>
+
+
 </div>
-<button id="submit-new-task" class="btn waves-effect waves-light" type="submit" name="action">Save
-  <i class="material-icons right"></i>
-</button>
