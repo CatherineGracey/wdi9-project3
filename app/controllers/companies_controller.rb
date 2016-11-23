@@ -42,6 +42,31 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def update
+    if Company.exists? params[:id]
+      company = Company.find params[:id]
+      if company.user_id == session[:user_id]
+        company.name = params[:name]
+        company.website = params[:website]
+        company.pros = params[:pros]
+        company.cons = params[:cons]
+        company.size = params[:size]
+        company.focus = params[:focus]
+        company.industry = params[:industry]
+        if company.save
+          render json: company
+        else
+          render json: {error: "Company has failed to update."}
+        end
+        render json: task
+      else
+        render json: {error: "ID is assigned to a different user."}
+      end
+    else
+      render json: {error: "ID does not exist"}
+    end
+  end
+
   def destroy
     if Company.exists? params[:id]
       company = Company.find params[:id]

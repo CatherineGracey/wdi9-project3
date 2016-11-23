@@ -49,6 +49,36 @@ class JobsController < ApplicationController
     end
   end
 
+  def update
+    if Job.exists? params[:id]
+      job = Job.find params[:id]
+      if job.user_id == session[:user_id]
+        job.job_status = JobStatus.find(params[:status])
+        job.company = Company.find(params[:company])
+        job.title = params[:title]
+        job.pros = params[:pros]
+        job.cons = params[:cons]
+        job.date_applied = params[:applied]
+        job.contact_name = params[:contact_name]
+        job.contact_phone = params[:contact_phone]
+        job.contact_email = params[:contact_email]
+        job.located = params[:located]
+        job.salary = params[:salary]
+        job.notes = params[:notes]
+        if task.save
+          render json: task
+        else
+          render json: {error: "Job has failed to update."}
+        end
+        render json: task
+      else
+        render json: {error: "ID is assigned to a different user."}
+      end
+    else
+      render json: {error: "ID does not exist"}
+    end
+  end
+
   def destroy
     if Job.exists? params[:id]
       job = Job.find params[:id]
