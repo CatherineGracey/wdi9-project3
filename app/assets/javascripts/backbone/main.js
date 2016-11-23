@@ -24,4 +24,10 @@ $().ready(function() {
   taskCollection.fetch()
   $('.task-list').append(taskListView.el);
 
+  // Make logout link submit logout form
+  $('#logout-link').click(function() {
+    $('#logout').submit();
+  });
+
+
 });
