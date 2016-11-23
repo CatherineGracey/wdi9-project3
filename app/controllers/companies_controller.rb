@@ -53,6 +53,7 @@ class CompaniesController < ApplicationController
         company.size = params[:size]
         company.focus = params[:focus]
         company.industry = params[:industry]
+        company.create_default_tasks company.user_id
         if company.save
           render json: company
         else
