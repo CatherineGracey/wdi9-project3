@@ -48,4 +48,18 @@ class JobsController < ApplicationController
       render json: {error: "ID does not exist"}
     end
   end
+
+  def destroy
+    if Job.exists? params[:id]
+      job = Job.find params[:id]
+      tasks = job.tasks
+      tasks.each do |task|
+        task.destroy
+      end
+      if job.user_id == session[:user_id]
+        job.destroy
+      end
+    end
+  end
+
 end

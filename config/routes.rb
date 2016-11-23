@@ -11,10 +11,12 @@ Rails.application.routes.draw do
   get '/companies', to: 'companies#all'
   get '/companies/:id', to: 'companies#show'
   post '/company', to: 'companies#create'
+  delete '/companies/:id/delete', to: 'companies#destroy'
 
   get '/jobs', to: 'jobs#all'
   get '/jobs/:id', to: 'jobs#show'
   post '/job', to: 'jobs#create'
+  delete '/jobs/:id/delete', to: 'jobs#destroy'
 
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'

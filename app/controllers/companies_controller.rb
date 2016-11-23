@@ -41,4 +41,18 @@ class CompaniesController < ApplicationController
       render json: {error: "ID does not exist."}
     end
   end
+
+  def destroy
+    if Company.exists? params[:id]
+      company = Company.find params[:id]
+      tasks = company.tasks
+      tasks.each do |task|
+        task.destroy
+      end
+      if company.user_id == session[:user_id]
+        company.destroy
+      end
+    end
+  end
+
 end
