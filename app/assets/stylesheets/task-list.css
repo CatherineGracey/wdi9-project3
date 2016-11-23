@@ -79,14 +79,14 @@ body {
 }
 
 #new-job, #new-company {
-  position: absolute;
+  position: fixed;
   bottom: 2em;
   left: 2em;
   display: none;
 }
 
 #new-task {
-  position: absolute;
+  position: fixed;
   bottom: 2em;
   left: 2em;
 }
