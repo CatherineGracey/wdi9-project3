@@ -16,7 +16,8 @@ $().ready(function() {
     });
   });
 
-  // Append rendered Task collection
   taskCollection.fetch()
+
   $('.task-list').append(taskView.render().el);
+
 });

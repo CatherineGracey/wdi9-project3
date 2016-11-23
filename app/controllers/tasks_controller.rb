@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   def all
     if session[:user_id]
-      tasks = User.find(session[:user_id]).tasks
+      tasks = User.find(session[:user_id]).tasks.order(due: :asc)
       render json: tasks
     else
       redirect_to '/'

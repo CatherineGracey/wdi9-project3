@@ -23,6 +23,8 @@ var NewTaskView = Backbone.View.extend({
       }
     }
     $.ajax(options)
+    var due = new Date(options.data.due);
+    options.data.due = due.toISOString();
     taskCollection.add(options.data);
   }
 });
