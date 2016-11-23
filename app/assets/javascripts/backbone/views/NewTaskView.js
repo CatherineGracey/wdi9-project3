@@ -1,7 +1,8 @@
 var NewTaskView = Backbone.View.extend({
 
   events: {
-    'click #submit-new-task': 'saveNewTask'
+    'click #submit-new-task': 'saveNewTask',
+    'click #close': 'hideForm'
   },
 
   template: HandlebarsTemplates['new_task'],
@@ -24,5 +25,13 @@ var NewTaskView = Backbone.View.extend({
     }
     $.ajax(options)
     taskCollection.add(options.data);
+  },
+
+  hideForm: function() {
+    $('#close').click(function() {
+      console.log('click');
+      $('.hidden-div').fadeOut("slow");
+    });
   }
+
 });
