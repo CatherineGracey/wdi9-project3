@@ -2,7 +2,14 @@ class JobsController < ApplicationController
   def all
     if session[:user_id]
       jobs = User.find(session[:user_id]).jobs
-      render json: jobs
+      json_jobs = []
+      jobs.each do |job|
+        json_job = job.as_json
+        json_job['company_name'] = Company.find(job.company_id).name
+        json_job['job_status_category'] = JobStatus.find(job.job_status_id).category
+        json_jobs.push json_job
+      end
+      render json: json_jobs
     else
       redirect_to '/'
     end
