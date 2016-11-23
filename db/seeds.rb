@@ -23,6 +23,32 @@ u.password = "pudding"
 u.username = "DT"
 u.save
 
+c1 = Company.new
+c1.name = "Google"
+c1.website = "www.google.com"
+c1.pros = "It's Google!"
+c1.cons = "It's in a different city"
+c1.size = "61,814 people"
+c1.focus = "Search engine and paid advertising provider"
+c1.industry = "IT"
+c1.user = User.last
+c1.save
+
+j1 = Job.new
+j1.user = User.last
+j1.job_status = JobStatus.find(1)
+j1.company = Company.last
+j1.title = "Senior Web Developer"
+j1.pros = "They have hammocks I can sleep in."
+j1.cons = "I don't like hammocks."
+j1.contact_name = "Joe Bloggs"
+j1.contact_phone = "555-5555"
+j1.contact_email = "joe.bloggs@gmail.com"
+j1.located = "Sydney"
+j1.salary = "$200k including super"
+j1.notes = "I heard about this job from Jane Doe. She wants me to take it so she can get a finding bonus."
+j1.save
+
 t1 = Task.new
 t1.title = "Apply to Google"
 t1.desc = "Send an application to the Google office in Sydney for a senior web developer role."
