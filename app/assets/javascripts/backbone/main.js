@@ -35,7 +35,8 @@ $().ready(function() {
       var searchResult = taskCollection.where({ title: $(this).val() });
       $(this).val("");
       console.log(searchResult);
-      var searchResultCollection = new TaskCollection(searchResult)
+      var searchResultCollection = new TaskCollection(searchResult);
+      console.log(searchResultCollection);
       var view = new TaskListView({collection: searchResultCollection});
       $('.hidden-div').html(view.render().el);
       $('.hidden-div').fadeIn('slow');

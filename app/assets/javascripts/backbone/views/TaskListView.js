@@ -6,6 +6,14 @@ var TaskListView = Backbone.View.extend({
     this.listenTo(this.collection, 'add', this.addOne);
   },
 
+  render: function() {
+    this.collection.each(function(model) {
+      var view = new TaskView({model: model});
+      this.$el.append(view.render().el);
+    }, this);
+    return this;
+  },
+
   addOne: function(model) {
     var pos = taskCollection.indexOf(model);
     var view = new TaskView({model: model});
