@@ -27,13 +27,11 @@ var NewTaskView = Backbone.View.extend({
     var due = new Date(options.data.due);
     options.data.due = due.toISOString();
     taskCollection.add(options.data);
+    this.hideForm();
   },
 
   hideForm: function() {
-    $('#close').click(function() {
-      console.log('click');
-      $('.hidden-div').fadeOut("slow");
-    });
+    $('.hidden-div').fadeOut("slow");
   }
 
 });
