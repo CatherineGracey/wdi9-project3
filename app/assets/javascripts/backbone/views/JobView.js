@@ -15,8 +15,8 @@ var JobView = Backbone.View.extend({
   },
 
   showDetails: function() {
-    var detailedTaskView = new DetailedJobView({model: this.model})
-    $('.task-detail').html(detailedTaskView.render().el);
+    var detailedJobView = new DetailedJobView({model: this.model})
+    $('.task-detail').html(detailedJobView.render().el);
   },
 
 });
