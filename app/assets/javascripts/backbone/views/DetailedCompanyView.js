@@ -19,6 +19,14 @@ var DetailedCompanyView = Backbone.View.extend({
     var companyTasksList = new TaskListView({ collection: companyTasksCollection });
     this.$el.find('#tasks-snapshot').append(companyTasksList.render().el);
 
+    // Filter jobs related to selected company and append list:
+    var companyJobs = jobCollection.filter(function(model) {
+      return model.get('company_id') === this.model.get('id');
+    }, this);
+    var companyJobsCollection = new TaskCollection(companyJobs);
+    var companyJobsList = new TaskListView({ collection: companyJobsCollection });
+    this.$el.find('#jobs-snapshot').append(companyJobsList.render().el);
+
     return this;
   },
 

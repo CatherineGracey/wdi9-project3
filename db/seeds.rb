@@ -21,6 +21,7 @@ u = User.new
 u.email = "dt@ga.co"
 u.password = "pudding"
 u.username = "DT"
+u.create_default_tasks
 u.save
 
 c1 = Company.new
@@ -32,6 +33,7 @@ c1.size = "61,814 people"
 c1.focus = "Search engine and paid advertising provider"
 c1.industry = "IT"
 c1.user = User.last
+c1.create_default_tasks c1.user_id
 c1.save
 
 j1 = Job.new
@@ -56,6 +58,8 @@ t1.due = Time.now + 4.days
 t1.complete = true
 t1.completed_on = Time.now
 t1.user = User.last
+t1.company = c1
+t1.job = j1
 t1.save
 
 t2 = Task.new
@@ -70,6 +74,7 @@ u2 = User.new
 u2.email = "harry@ga.co"
 u2.password = "trolling"
 u2.username = "HMAN"
+u2.create_default_tasks
 u2.save
 
 t3 = Task.new
