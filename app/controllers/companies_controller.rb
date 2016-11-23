@@ -19,8 +19,9 @@ class CompaniesController < ApplicationController
       company.focus = params[:focus]
       company.industry = params[:industry]
       company.user_id = session[:user_id]
+      company.create_default_tasks company.user_id
       if company.save
-        render json: task
+        render json: {company: company, tasks: company.tasks}
       else
         render json: {error: "Company has failed to save."}
       end
@@ -53,13 +54,11 @@ class CompaniesController < ApplicationController
         company.size = params[:size]
         company.focus = params[:focus]
         company.industry = params[:industry]
-        company.create_default_tasks company.user_id
         if company.save
           render json: company
         else
           render json: {error: "Company has failed to update."}
         end
-        render json: task
       else
         render json: {error: "ID is assigned to a different user."}
       end

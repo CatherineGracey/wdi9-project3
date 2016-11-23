@@ -65,12 +65,12 @@ class JobsController < ApplicationController
         job.located = params[:located]
         job.salary = params[:salary]
         job.notes = params[:notes]
-        if task.save
-          render json: task
+        if job.save
+          render json: job
         else
           render json: {error: "Job has failed to update."}
         end
-        render json: task
+        render json: job
       else
         render json: {error: "ID is assigned to a different user."}
       end
