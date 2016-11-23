@@ -29,7 +29,8 @@ $().ready(function() {
         query = $(this).val();
         console.log("query = " + query);
         console.log("task collection = " + taskCollection);
-        $(this).val("");
+        // $(this).val("");
+        
       }
 
     // when enter is pressed, get the value of the input, and filter the taskCollection.
