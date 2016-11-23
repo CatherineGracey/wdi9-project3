@@ -48,15 +48,15 @@ $().ready(function() {
 
   // Navigation tab click handlers:
   $('#jobs-tab').click(function() {
-    $('.task-list-container').html(jobListView.el);
+    $('.task-list-container').html(jobListView.render().el);
   })
 
   $('#tasks-tab').click(function() {
-    $('.task-list-container').html(taskListView.el);
+    $('.task-list-container').html(taskListView.render().el);
   })
 
   $('#companies-tab').click(function() {
-    $('.task-list-container').html(companyListView.el);
+    $('.task-list-container').html(companyListView.render().el);
   })
 
   // Make logout link submit logout form
