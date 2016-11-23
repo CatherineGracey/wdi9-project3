@@ -24,7 +24,6 @@ $().ready(function() {
   taskCollection.fetch()
   $('.task-list').append(taskListView.el);
 
-
   //search test
   $('#search-task').keypress(function(event) {
     // debugger
@@ -50,5 +49,9 @@ $().ready(function() {
   $('#search-task').mousedown(function() {
       $(this).val("");
   })
+  // Make logout link submit logout form
+  $('#logout-link').click(function() {
+    $('#logout').submit();
+  });
 
 });

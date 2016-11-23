@@ -1,9 +1,14 @@
-<h1>{{title}}</h1>
-<input type="checkbox" name="completed" id="completed-task" {{#if completed_on}}checked{{/if}}>
-<label for="completed-task">Due at {{due}}</label>
-{{#if completed_on}}
+
+<div class="container">
+
+  <h1>{{title}}</h1>
+  <input type="checkbox" name="completed" id="completed-task" {{#if completed_on}}checked{{/if}}>
+  <label for="completed-task">Due at {{due}}</label>
+  {{#if completed_on}}
   <p>Completed on: {{completed_on}}</p>
-{{/if}}
-<p>{{desc}}</p>
-<button class="btn waves-effect waves-light" type="submit" name="action" id="edit-task-btn">Edit</button>
-<button class="btn waves-effect waves-light" type="submit" name="action" id="delete-task-btn">Delete</button>
+  {{/if}}
+  <p>{{desc}}</p>
+  <button class="btn waves-effect waves-light" type="submit" name="action" id="edit-task-btn">Edit</button>
+  <button class="btn waves-effect waves-light" type="submit" name="action" id="delete-task-btn">Delete</button>
+
+</div>
