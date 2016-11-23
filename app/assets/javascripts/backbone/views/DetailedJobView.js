@@ -18,7 +18,7 @@ var DetailedJobView = Backbone.View.extend({
     // var companyTasksCollection = new TaskCollection(companyTasks);
     // var companyTasksList = new TaskListView({ collection: companyTasksCollection });
     // this.$el.find('#tasks-snapshot').append(companyTasksList.render().el);
-    
+
     return this;
   },
 

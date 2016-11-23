@@ -1,30 +1,35 @@
-<h1>{{title}} and {{company.name}}</h1>
 
-<h2>Tasks</h2>
-<ul class="collection" id="tasks-snapshot">
-  <li class="collection-item">I'm a task!</li>
-</ul>
+<div class="container">
 
-<p><span>Applied:</span> {{#if date_applied}}{{date_applied}}{{else}}Not Applied{{/if}}
-  <br><span>Status:</span> {{job_status.content}}
-</p>
-<p><span>Contact:</span>
-  <i class="material-icons">phone</i> {{contact_phone}}
-  <i class="material-icons">email</i> {{contact_email}}
-</p>
+  <h1>{{title}} and {{company.name}}</h1>
 
-<div class="col s6">
-  <h3>Pros</h3>
-  <p>{{pros}}</p>
+  <h2>Tasks</h2>
+  <ul class="collection" id="tasks-snapshot">
+    <li class="collection-item">I'm a task!</li>
+  </ul>
+
+  <p><span>Applied:</span> {{#if date_applied}}{{date_applied}}{{else}}Not Applied{{/if}}
+    <br><span>Status:</span> {{job_status.content}}
+  </p>
+  <p><span>Contact:</span>
+    <i class="material-icons">phone</i> {{contact_phone}}
+    <i class="material-icons">email</i> {{contact_email}}
+  </p>
+
+  <div class="col s6">
+    <h3>Pros</h3>
+    <p>{{pros}}</p>
+  </div>
+  <div class="col s6">
+    <h3>Cons</h3>
+    <p>{{cons}}</p>
+  </div>
+
+  <p><span>Location:</span> {{located}}</p>
+  <p><span>Salary:</span> {{salary}}</p>
+  <p><span>Notes:</span> {{notes}}</p>
+
+  <button class="btn waves-effect waves-light" type="submit" name="action" id="edit-job-btn">Edit</button>
+  <button class="btn waves-effect waves-light" type="submit" name="action" id="delete-job-btn">Delete</button>
+
 </div>
-<div class="col s6">
-  <h3>Cons</h3>
-  <p>{{cons}}</p>
-</div>
-
-<p><span>Location:</span> {{located}}</p>
-<p><span>Salary:</span> {{salary}}</p>
-<p><span>Notes:</span> {{notes}}</p>
-
-<button class="btn waves-effect waves-light" type="submit" name="action" id="edit-job-btn">Edit</button>
-<button class="btn waves-effect waves-light" type="submit" name="action" id="delete-job-btn">Delete</button>

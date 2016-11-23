@@ -73,3 +73,20 @@ body {
   bottom: 0;
   background-color: mistyrose;
 }
+
+#search-task {
+  text-align: center;
+}
+
+#new-job, #new-company {
+  position: absolute;
+  bottom: 2em;
+  left: 2em;
+  display: none;
+}
+
+#new-task {
+  position: absolute;
+  bottom: 2em;
+  left: 2em;
+}
