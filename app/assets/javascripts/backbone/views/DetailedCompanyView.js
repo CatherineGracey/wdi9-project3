@@ -8,7 +8,7 @@ var DetailedCompanyView = Backbone.View.extend({
   template: HandlebarsTemplates['company_details'],
 
   render: function() {
-    var html = this.template(this.model);
+    var html = this.template(this.model.toJSON());
     this.$el.html(html);
     
     // Filter tasks related to selected company and append list:
@@ -23,8 +23,8 @@ var DetailedCompanyView = Backbone.View.extend({
     var companyJobs = jobCollection.filter(function(model) {
       return model.get('company_id') === this.model.get('id');
     }, this);
-    var companyJobsCollection = new TaskCollection(companyJobs);
-    var companyJobsList = new TaskListView({ collection: companyJobsCollection });
+    var companyJobsCollection = new JobCollection(companyJobs);
+    var companyJobsList = new JobListView({ collection: companyJobsCollection });
     this.$el.find('#jobs-snapshot').append(companyJobsList.render().el);
 
     return this;
