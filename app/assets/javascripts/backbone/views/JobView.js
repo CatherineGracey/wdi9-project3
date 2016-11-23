@@ -1,6 +1,6 @@
 var JobView = Backbone.View.extend({
 
-  className: 'collection-item',
+  className: 'task-summary',
 
   events: {
     'click a': 'showDetails'
@@ -17,6 +17,11 @@ var JobView = Backbone.View.extend({
   showDetails: function() {
     var detailedJobView = new DetailedJobView({model: this.model})
     $('.task-detail').html(detailedJobView.render().el);
+
+    // Make Task display 'active'
+    $('.task-list a').removeClass('active');
+    this.$el.find('a').addClass('active');
+
   },
 
 });
