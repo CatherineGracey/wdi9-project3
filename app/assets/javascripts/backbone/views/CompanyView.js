@@ -15,8 +15,8 @@ var CompanyView = Backbone.View.extend({
   },
 
   showDetails: function() {
-    var detailedTaskView = new DetailedCompanyView({model: this.model})
-    $('.task-detail').html(detailedTaskView.render().el);
+    var detailedCompanyView = new DetailedCompanyView({model: this.model})
+    $('.task-detail').html(detailedCompanyView.render().el);
   },
 
 });

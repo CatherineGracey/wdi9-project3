@@ -10,10 +10,14 @@ var DetailedCompanyView = Backbone.View.extend({
   render: function() {
     var html = this.template(this.model);
     this.$el.html(html);
-    this.collection.each(function(model){
-      var taskView = new TaskView({model: model});
-      this.$el.find('#tasks-snapshot').append(taskView.render().el);
+    // Filter tasks related to selected company and append list:
+    var companyTasks = taskCollection.filter(function(model) {
+      return model.get('company_id') === this.model.get('id');
     }, this);
+    var companyTasksCollection = new TaskCollection(companyTasks);
+    var companyTasksList = new TaskListView({ collection: companyTasksCollection });
+    this.$el.find('#tasks-snapshot').append(companyTasksList.render().el);
+
     return this;
   },
 
