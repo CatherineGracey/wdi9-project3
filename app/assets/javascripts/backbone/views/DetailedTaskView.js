@@ -8,7 +8,7 @@ var DetailedTaskView = Backbone.View.extend({
   template: HandlebarsTemplates['task_details'],
 
   render: function() {
-    var html = this.template(task);
+    var html = this.template(this.model.toJSON());
     this.$el.html(html);
     return this;
   },

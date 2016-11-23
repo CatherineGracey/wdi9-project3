@@ -1,7 +1,7 @@
 // Create Collection of Tasks
 var taskCollection = new TaskCollection();
 
-var taskView = new TaskView({
+var taskListView = new TaskListView({
   collection: taskCollection
 });
 
@@ -46,7 +46,6 @@ $().ready(function() {
 
   // Populate task collection with AJAX call
   taskCollection.fetch()
-
-  $('.task-list').append(taskView.render().el);
+  $('.task-list').append(taskListView.el);
 
 });
