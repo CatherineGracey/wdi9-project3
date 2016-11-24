@@ -1,6 +1,18 @@
 <div class="container">
 
-    <h3 id="new-task-title">New Job</h3>
+  <h3 id="new-task-title">New Job</h3>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <select name="company">
+        <option value="">None</option>
+        {{#each companies}}
+        <option value="{{this.id}}">{{this.name}}</option>
+        {{/each}}
+      </select>
+      <label for="company">Link job to a company</label>
+    </div>
+  </div>
 
   <div class="row">
     <div class="input-field col s12">

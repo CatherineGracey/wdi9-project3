@@ -7,7 +7,12 @@ var NewJobView = Backbone.View.extend({
   template: HandlebarsTemplates['new_job'],
 
   render: function() {
-    var html = this.template();
+    // Compile list of companies
+    var data = { companies: [] };
+    companyCollection.each(function(company) {
+      data.companies.push({ id: company.get('id'), name: company.get('name') });
+    });
+    var html = this.template(data);
     this.$el.html(html);
     return this;
   },
