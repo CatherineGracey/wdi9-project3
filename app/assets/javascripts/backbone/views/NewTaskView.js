@@ -29,13 +29,15 @@ var NewTaskView = Backbone.View.extend({
         title: $('input[name="title"]').val(),
         desc: $('input[name="desc"]').val(),
         due: $('input[name="due"]').val(),
+        company_id: parseInt($('select[name="company"]').val()),
+        job_id: parseInt($('select[name="job"]').val())
       }
     }
     $.ajax(options)
     var due = new Date(options.data.due);
     options.data.due = due.toISOString();
     taskCollection.add(options.data);
-    this.hideForm();
+    $('.hidden-div').fadeOut();
   }
 
 });
