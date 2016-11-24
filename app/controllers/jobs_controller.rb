@@ -5,8 +5,8 @@ class JobsController < ApplicationController
       json_jobs = []
       jobs.each do |job|
         json_job = job.as_json
-        json_job['company_name'] = Company.find(job.company_id).name
-        json_job['job_status_category'] = JobStatus.find(job.job_status_id).category
+        json_job['company_name'] = Company.find(job.company_id).name if job.company_id
+        json_job['job_status_category'] = JobStatus.find(job.job_status_id).category if job.job_status_id
         json_jobs.push json_job
       end
       render json: json_jobs
