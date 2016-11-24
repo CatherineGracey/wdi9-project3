@@ -19,7 +19,7 @@ body {
   display: none;
   overflow-y: scroll;
   position: fixed;
-  z-index: 999;
+  z-index: 998;
   top: 50%;
   left: 50%;
   width: 80%;
@@ -34,6 +34,14 @@ body {
   -webkit-box-shadow: 10px 7px 24px -2px rgba(133,133,133,0.55);
   -moz-box-shadow: 10px 7px 24px -2px rgba(133,133,133,0.55);
   box-shadow: 10px 7px 24px -2px rgba(133,133,133,0.55);
+}
+
+.x {
+  display: none;
+  z-index: 999;
+  position: fixed;
+  top: 10%;
+  left: 80%;
 }
 
 .task-container {
@@ -101,6 +109,11 @@ body {
   float: left;
 }
 
+.user-email {
+  margin-left: 2em;
+  font-size: 1em;
+}
+  
 .complete {
   text-decoration: line-through;
 }

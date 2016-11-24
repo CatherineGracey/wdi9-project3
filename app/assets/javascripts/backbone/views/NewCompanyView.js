@@ -2,7 +2,6 @@ var NewCompanyView = Backbone.View.extend({
 
   events: {
     'click #submit-new-company': 'saveNewCompany',
-    'click #close': 'hideForm'
   },
 
   template: HandlebarsTemplates['new_company'],
@@ -33,12 +32,8 @@ var NewCompanyView = Backbone.View.extend({
         task.due = new Date(task.due);
         taskCollection.add(task);
       });
-    });    
+    });
     this.hideForm();
-  },
-
-  hideForm: function() {
-    $('.hidden-div').fadeOut("slow");
   }
 
 });

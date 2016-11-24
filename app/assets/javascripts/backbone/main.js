@@ -19,7 +19,8 @@ $().ready(function() {
     });
     $('select').material_select();
     // Reveal hidden-div
-    $('.hidden-div').fadeIn("slow");
+    $('.hidden-div').fadeIn();
+    $('.x').fadeIn();
   });
 
   $('#new-job').click(function() {
@@ -32,6 +33,7 @@ $().ready(function() {
     });
     // Reveal hidden-div
     $('.hidden-div').fadeIn();
+    $('.x').fadeIn();
   });
 
   $('#new-company').click(function() {
@@ -40,8 +42,13 @@ $().ready(function() {
     $('.hidden-div').html(view.render().el);
     // Reveal hidden-div
     $('.hidden-div').fadeIn();
+    $('.x').fadeIn();
   });
 
+  $('.x').click(function() {
+    $('.hidden-div').fadeOut();
+    $('.x').fadeOut();
+  });
 
   // Search box functionality:
   $('#search-task').val("Search");
@@ -56,16 +63,19 @@ $().ready(function() {
       var queryInput = $(this).val();
       // debugger
       var taskCollectionJson = taskCollection.toJSON();
-      var filteredTask = _.filter(taskCollectionJson, function(Object) { 
-          
-         return Object.title.includes(queryInput); 
+      var filteredTask = _.filter(taskCollectionJson, function(Object) {
+
+         return Object.title.includes(queryInput);
       })
 
       var filteredTaskCollection = new TaskCollection(filteredTask);
       var view = new TaskListView({ collection: filteredTaskCollection });
-    
+
       $('.hidden-div').html(view.render().el);
       $('.hidden-div').fadeIn();
+      $('.x').fadeIn();
+
+
     }
   });
 

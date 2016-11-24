@@ -2,7 +2,6 @@ var NewJobView = Backbone.View.extend({
 
   events: {
     'click #submit-new-job': 'saveNewJob',
-    'click #close': 'hideForm'
   },
 
   template: HandlebarsTemplates['new_job'],
@@ -37,10 +36,6 @@ var NewJobView = Backbone.View.extend({
     }
     jobCollection.add(options.data);
     this.hideForm();
-  },
-
-  hideForm: function() {
-    $('.hidden-div').fadeOut("slow");
   }
 
 });
