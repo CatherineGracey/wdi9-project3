@@ -48,6 +48,9 @@ var NewJobView = Backbone.View.extend({
       options.data.company_name = selectedCompany[0].get('name');
     }
     jobCollection.add(options.data);
+    companyJobsCollection.add(options.data);
+
+    window.scrollTo(0, 0);
     $('.hidden-div').fadeOut();
     $('.x').fadeOut();
   }

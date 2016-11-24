@@ -17,7 +17,7 @@ var DetailedCompanyView = Backbone.View.extend({
     var companyTasks = taskCollection.filter(function(model) {
       return model.get('company_id') === this.model.get('id');
     }, this);
-    var companyTasksCollection = new TaskCollection(companyTasks);
+    companyTasksCollection = new TaskCollection(companyTasks);
     var companyTasksList = new TaskListView({ collection: companyTasksCollection });
     this.$el.find('#tasks-snapshot').append(companyTasksList.render().el);
 
@@ -25,7 +25,7 @@ var DetailedCompanyView = Backbone.View.extend({
     var companyJobs = jobCollection.filter(function(model) {
       return model.get('company_id') === this.model.get('id');
     }, this);
-    var companyJobsCollection = new JobCollection(companyJobs);
+    companyJobsCollection = new JobCollection(companyJobs);
     var companyJobsList = new JobListView({ collection: companyJobsCollection });
     this.$el.find('#jobs-snapshot').append(companyJobsList.render().el);
 
@@ -43,7 +43,22 @@ var DetailedCompanyView = Backbone.View.extend({
       method: 'delete'
     }
     $.ajax(options);
+    // Remove linked front end models
     companyCollection.remove(model);
+    var companyTasks = [];
+    taskCollection.each(function(task_model) {
+      if (task_model.get('company_id') == model.get('id')) {
+        companyTasks.push(task_model);
+      }
+    });
+    taskCollection.remove(companyTasks);
+    var companyJobs = [];
+    jobCollection.each(function(job_model) {
+      if (job_model.get('company_id') == model.get('id')) {
+        companyJobs.push(job_model);
+      }
+    });
+    jobCollection.remove(companyJobs);
     $('.task-detail').html('')
   },
 
@@ -57,6 +72,7 @@ var DetailedCompanyView = Backbone.View.extend({
     });
     $('select').material_select();
     // Reveal hidden-div
+    window.scrollTo(0, 0);
     $('.hidden-div').fadeIn();
     $('.x').fadeIn();
   },
@@ -71,6 +87,7 @@ var DetailedCompanyView = Backbone.View.extend({
     });
     $('select').material_select();
     // Reveal hidden-div
+    window.scrollTo(0, 0);
     $('.hidden-div').fadeIn();
     $('.x').fadeIn();
   }
