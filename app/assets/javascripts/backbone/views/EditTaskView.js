@@ -9,7 +9,7 @@ var EditTaskView = Backbone.View.extend({
 
   render: function() {
     var model = this.model.toJSON();
-    model.due = model.due.substring(0, 16);
+    model.due = model.due.substring(0, 10);
     // Compile list of companies and jobs
     model.companies = [{id: "", name: "None"}];
     companyCollection.each(function(company) {
@@ -44,16 +44,17 @@ var EditTaskView = Backbone.View.extend({
       url: '/tasks/' + model.get('id') + '/edit',
       method: 'post',
       data: {
-        title: $('input[name="title"]').val(),
-        desc: $('input[name="desc"]').val(),
-        due: $('input[name="due"]').val(),
-        // company_id: parseInt($('select[name="company"]').val()),
-        // job_id: parseInt($('select[name="job"]').val())
+        title: $('#edit-task-title').val(),
+        desc: $('#edit-task-desc').val(),
+        due: $('#edit-task-datepicker').val(),
+        company_id: $('#edit-task-company-name').val(),
+        job_id: $('#edit-task-job-title').val()
       }
     }
-    $.ajax(options).done(
-
-    );
+    console.log(options)
+    $.ajax(options).done(function(response){
+      console.log(response);
+    });
   },
 
   deleteTask: function() {

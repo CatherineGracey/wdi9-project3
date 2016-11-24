@@ -78,16 +78,15 @@ class TasksController < ApplicationController
         task.title = params[:title]
         task.desc = params[:desc]
         task.due = params[:due]
-        task.complete = params[:complete]
-        task.completed_on = params[:completed_on]
-        task.company = Company.find(params[:company])
-        task.job = Jobs.find(params[:job])
+        # task.complete = params[:complete]
+        # task.completed_on = params[:completed_on]
+        task.company = params[:company]
+        task.job = params[:job]
         if task.save
           render json: task
         else
           render json: {error: "Task has failed to save."}
         end
-        render json: task
       else
         render json: {error: "ID is assigned to a different user."}
       end
