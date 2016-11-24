@@ -75,6 +75,10 @@ class CompaniesController < ApplicationController
       tasks.each do |task|
         task.destroy
       end
+      jobs = company.jobs
+      jobs.each do |job|
+        job.destroy
+      end
       if company.user_id == session[:user_id]
         company.destroy
       end
