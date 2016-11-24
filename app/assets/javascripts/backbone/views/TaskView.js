@@ -31,6 +31,8 @@ var TaskView = Backbone.View.extend({
     this.$el.find('a').addClass('active');
     window.scrollTo(0, 0);
     $('.hidden-div').fadeOut();
+    $('.x').fadeOut();
+
   },
 
 });

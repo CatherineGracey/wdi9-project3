@@ -59,6 +59,8 @@ var DetailedJobView = Backbone.View.extend({
     });
     // Reveal hidden-div
     $('.hidden-div').fadeIn();
+    $('.x').fadeIn();
+
   }
 
 });

@@ -57,6 +57,8 @@ var DetailedCompanyView = Backbone.View.extend({
     });
     // Reveal hidden-div
     $('.hidden-div').fadeIn();
+    $('.x').fadeIn();
+
   },
 
   newTask: function() {
@@ -69,6 +71,8 @@ var DetailedCompanyView = Backbone.View.extend({
     });
     // Reveal hidden-div
     $('.hidden-div').fadeIn();
+    $('.x').fadeIn();
+
   }
 
 });
