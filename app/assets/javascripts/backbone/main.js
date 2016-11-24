@@ -52,10 +52,17 @@ $().ready(function() {
   });
   $('#search-task').bind('keypress', function(e) {
     if (e.keyCode == 13) {
-      var searchResult = taskCollection.where({ title: $(this).val() });
-      $(this).val("");
-      var searchResultCollection = new TaskCollection(searchResult);
-      var view = new TaskListView({collection: searchResultCollection});
+      var queryInput = $(this).val();
+      // debugger
+      var taskCollectionJson = taskCollection.toJSON();
+      var filteredTask = _.filter(taskCollectionJson, function(Object) { 
+          
+         return Object.title.includes(queryInput); 
+      })
+
+      var filteredTaskCollection = new TaskCollection(filteredTask);
+      var view = new TaskListView({ collection: filteredTaskCollection });
+    
       $('.hidden-div').html(view.render().el);
       $('.hidden-div').fadeIn('slow');
     }
