@@ -23,8 +23,12 @@ $().ready(function() {
 
   $('#new-job').click(function() {
     // Render new task form, append to hidden-div
-      // Code here
-
+    var view = new NewJobView();
+    $('.hidden-div').html(view.render().el);
+    $('.datepicker').pickadate({
+      selectMonths: true,
+      selectYears: 15
+    });
     // Reveal hidden-div
     $('.hidden-div').fadeIn("slow");
   });
