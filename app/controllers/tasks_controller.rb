@@ -110,9 +110,12 @@ class TasksController < ApplicationController
     if task.complete
       task.complete = nil
       task.completed_on = nil
+      task.save
     else
       task.complete = true
       task.completed_on = Time.now
+      task.save
     end
+    render json: task
   end
 end
