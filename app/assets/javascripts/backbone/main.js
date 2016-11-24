@@ -8,6 +8,11 @@ var companyListView = new CompanyListView({ collection: companyCollection });
 var jobListView = new JobListView({ collection: jobCollection });
 
 $().ready(function() {
+  $(document).keyup(function(e) {
+    if (e.keyCode == 27) {
+      $('.hidden-div').fadeOut();
+    }
+  });
 
   $('#new-task').click(function() {
     // Render new task form, append to hidden-div
@@ -50,10 +55,9 @@ $().ready(function() {
   $('#search-task').focusout(function() {
       $(this).val("Search");
   });
-  $('#search-task').bind('keypress', function(e) {
+  $('#search-task').bind('keyup', function(e) {
     if (e.keyCode == 13) {
       var queryInput = $(this).val();
-      // debugger
       var taskCollectionJson = taskCollection.toJSON();
       var filteredTask = _.filter(taskCollectionJson, function(Object) { 
           
