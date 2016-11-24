@@ -17,6 +17,7 @@ $().ready(function() {
       selectMonths: true,
       selectYears: 15
     });
+    $('select').material_select();
     // Reveal hidden-div
     $('.hidden-div').fadeIn("slow");
   });

@@ -8,7 +8,16 @@ var NewTaskView = Backbone.View.extend({
   template: HandlebarsTemplates['new_task'],
 
   render: function() {
-    var html = this.template();
+    // Compile list of companies and jobs
+    var data = { companies: [], jobs: [] };
+    companyCollection.each(function(company) {
+      data.companies.push({ id: company.get('id'), name: company.get('name') });
+    });
+    jobCollection.each(function(job) {
+      data.jobs.push({ id: job.get('id'), title: job.get('title') });
+    });
+
+    var html = this.template(data);
     this.$el.html(html);
     return this;
   },
