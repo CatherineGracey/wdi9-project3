@@ -70,7 +70,7 @@ $().ready(function() {
       var queryInput = $(this).val();
       var taskCollectionJson = taskCollection.toJSON();
       var filteredTask = _.filter(taskCollectionJson, function(Object) {
-         return Object.title.includes(queryInput);
+         return Object.title.toLowerCase().includes(queryInput.toLowerCase());
       })
 
       var filteredTaskCollection = new TaskCollection(filteredTask);
