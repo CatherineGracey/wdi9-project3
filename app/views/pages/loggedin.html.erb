@@ -10,6 +10,11 @@
 
 <div class="root">
 
+  <div class="x">
+    <i class="medium material-icons" id="close">clear</i>
+  </div>
+
+
   <div class="hidden-div">
   <!-- Add task, add job, add company, and history search goes here -->
   </div>
@@ -17,6 +22,12 @@
   <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
+
+          <ul class="left">
+            <span class="user-email">
+              Logged in as: <%= @user_email %>
+            </span>
+          </ul>
 
           <ul class="right">
 
