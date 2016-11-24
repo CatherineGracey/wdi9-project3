@@ -4,6 +4,7 @@ var CompanyListView = Backbone.View.extend({
 
   initialize: function() {
     this.listenTo(this.collection, 'add', this.addOne);
+    this.listenTo(this.collection, 'remove', this.render);
   },
 
   render: function() {

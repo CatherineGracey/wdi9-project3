@@ -37,7 +37,14 @@ var DetailedCompanyView = Backbone.View.extend({
   },
 
   deleteCompany: function() {
-
+    var model = this.model
+    var options = {
+      url: '/companies/' + model.get('id') + '/delete',
+      method: 'delete'
+    }
+    $.ajax(options);
+    companyCollection.remove(model);
+    $('.task-detail').html('')
   },
 
   newJob: function() {
