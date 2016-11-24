@@ -58,6 +58,7 @@ var DetailedJobView = Backbone.View.extend({
     });
     $('select').material_select();
     // Reveal hidden-div
+    window.scrollTo(0, 0);
     $('.hidden-div').fadeIn();
     $('.x').fadeIn();
   }
