@@ -3,6 +3,54 @@ class User < ApplicationRecord
   has_many :companies, dependent: :destroy
   has_many :jobs, dependent: :destroy
   has_many :tasks, dependent: :destroy
+  has_many :recurring_tasks, dependent: :destroy
+
+  def generate_recurring_tasks
+    new_tasks = []
+    # firstdue: Thu, 01 Dec 2016 01:42:03 UTC +00:00,
+    # frequency: 1480210923,
+    # prior: 1480124523,
+    # task_id: nil,
+
+    self.recurring_tasks.each do |rt|
+      if !rt.task
+      # If no previous task exists yet, generate the task
+      # If the previous task has not been checked off, do not generate a new one
+      # If the previous task has been checked off, check if a new task is due to be created yet
+        t = Task.new
+        t.title = rt[:title]
+        t.desc = rt[:desc]
+        t.due = rt[:firstdue]
+        t.complete = false
+        t.user = self
+        t.company_id = rt[:company_id]
+        t.job_id = rt[:job_id]
+        t.save
+        t.reload
+        new_tasks << t
+        rt.task = t
+        rt.save
+      end
+    end
+    return new_tasks
+  end
+
+  def create_default_recurring_tasks
+    tasks = [{
+      title: "Check job boards",
+      desc: "Approximately 20% of all jobs are advertised on job boards, so they can be a great way to find companies that you might not have otherwise considered."
+    }]
+    tasks.each do |task|
+      rt = RecurringTask.new
+      rt.title = task[:title] #Task name to display when task is generated
+      rt.desc = task[:desc] #Task description
+      rt.firstdue = Time.now + 7.days #Date user sets that the task is first due
+      rt.frequency = Time.now + 3.days #Frequency with which the task should be generated
+      rt.prior = Time.now + 2.days #Amount of time between when the task is generated and due next
+      rt.user = self
+      rt.save
+    end
+  end
 
   def create_default_tasks
     tasks = [{
@@ -32,7 +80,7 @@ class User < ApplicationRecord
       t.user = self
       t.title = task[:title]
       t.desc = task[:desc]
-      t.due = Time.now + 7.days
+      t.due = Time.now + 5.days
       t.complete = false
       t.save
     end

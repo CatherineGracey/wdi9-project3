@@ -22,6 +22,8 @@ u.email = "dt@ga.co"
 u.password = "pudding"
 u.username = "DT"
 u.create_default_tasks
+u.create_default_recurring_tasks
+u.generate_recurring_tasks
 u.save
 
 c1 = Company.new
@@ -75,6 +77,8 @@ u2.email = "harry@ga.co"
 u2.password = "trolling"
 u2.username = "HMAN"
 u2.create_default_tasks
+u2.create_default_recurring_tasks
+u2.generate_recurring_tasks
 u2.save
 
 t3 = Task.new

@@ -21,7 +21,8 @@ class CompaniesController < ApplicationController
       company.user_id = session[:user_id]
       company.create_default_tasks company.user_id
       if company.save
-        render json: {company: company, tasks: company.tasks}
+        tasks = User.find(company.user_id).generate_recurring_tasks.concat(company.tasks)
+        render json: {company: company, tasks: tasks}
       else
         render json: {error: "Company has failed to save."}
       end
