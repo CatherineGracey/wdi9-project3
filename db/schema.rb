@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123013519) do
+ActiveRecord::Schema.define(version: 20161124002150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,24 @@ ActiveRecord::Schema.define(version: 20161123013519) do
     t.index ["user_id"], name: "index_jobs_on_user_id", using: :btree
   end
 
+  create_table "recurring_tasks", force: :cascade do |t|
+    t.string   "title"
+    t.text     "desc"
+    t.datetime "firstdue"
+    t.integer  "frequency"
+    t.integer  "prior"
+    t.integer  "task_id"
+    t.integer  "user_id"
+    t.integer  "company_id"
+    t.integer  "job_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_recurring_tasks_on_company_id", using: :btree
+    t.index ["job_id"], name: "index_recurring_tasks_on_job_id", using: :btree
+    t.index ["task_id"], name: "index_recurring_tasks_on_task_id", using: :btree
+    t.index ["user_id"], name: "index_recurring_tasks_on_user_id", using: :btree
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string   "title"
     t.text     "desc"
@@ -84,6 +102,10 @@ ActiveRecord::Schema.define(version: 20161123013519) do
   add_foreign_key "jobs", "companies"
   add_foreign_key "jobs", "job_statuses"
   add_foreign_key "jobs", "users"
+  add_foreign_key "recurring_tasks", "companies"
+  add_foreign_key "recurring_tasks", "jobs"
+  add_foreign_key "recurring_tasks", "tasks"
+  add_foreign_key "recurring_tasks", "users"
   add_foreign_key "tasks", "companies"
   add_foreign_key "tasks", "jobs"
   add_foreign_key "tasks", "users"
