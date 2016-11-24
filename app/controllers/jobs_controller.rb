@@ -19,8 +19,8 @@ class JobsController < ApplicationController
     if session[:user_id]
       job = Job.new
       job.user_id = session[:user_id]
-      job.job_status = JobStatus.find(params[:status])
-      job.company = Company.find(params[:company])
+      job.job_status = JobStatus.find(params[:status]) if params[:status]
+      job.company = Company.find(params[:company]) if params[:company]
       job.title = params[:title]
       job.pros = params[:pros]
       job.cons = params[:cons]
