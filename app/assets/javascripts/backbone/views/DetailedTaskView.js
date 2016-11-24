@@ -15,13 +15,19 @@ var DetailedTaskView = Backbone.View.extend({
   },
 
   editTask: function() {
-    var editTaskView = new EditTaskView({model: this.model})
+    model = this.model
+    var editTaskView = new EditTaskView({model: model})
     $('.task-detail').html(editTaskView.render().el);
     // Make Task display 'active'
     $('.task-list a').removeClass('active');
     this.$el.find('a').addClass('active');
     window.scrollTo(0, 0);
     $('.hidden-div').fadeOut();
+    $('#edit-task-company-name').material_select();
+    // $("#edit-task-company-name").val(model.get('company_id')).prop('selected', true);
+    $('#edit-task-company-name option[value="' + model.get('company_id') + '"]').attr("selected", "selected");
+    // $('#edit-task-company-name option[value="' + model.get('company_id') + '"]').prop("checked");
+    $('#edit-task-job-title').material_select();
   },
 
   deleteTask: function() {

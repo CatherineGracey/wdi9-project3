@@ -26,9 +26,9 @@ var NewTaskView = Backbone.View.extend({
       url: '/task',
       method: 'post',
       data: {
-        title: $('input[name="title"]').val(),
-        desc: $('input[name="desc"]').val(),
-        due: $('input[name="due"]').val(),
+        title: $('#edit-task-title').val(),
+        desc: $('#edit-task-desc').val(),
+        due: $('#edit-task-datepicker').val(),
         company_id: parseInt($('select[name="company"]').val()),
         job_id: parseInt($('select[name="job"]').val())
       }
