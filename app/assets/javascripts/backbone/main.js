@@ -2,6 +2,7 @@
 var taskCollection = new TaskCollection();
 var companyCollection = new CompanyCollection();
 var jobCollection = new JobCollection();
+var jobTasksCollection = new TaskCollection();
 
 var taskListView = new TaskListView({ collection: taskCollection });
 var companyListView = new CompanyListView({ collection: companyCollection });

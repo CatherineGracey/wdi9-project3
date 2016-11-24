@@ -37,6 +37,7 @@ var NewTaskView = Backbone.View.extend({
     var due = new Date(options.data.due);
     options.data.due = due.toISOString();
     taskCollection.add(options.data);
+    jobTasksCollection.add(options.data);
     $('.hidden-div').fadeOut();
     $('.x').fadeOut();
   }
