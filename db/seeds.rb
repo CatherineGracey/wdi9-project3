@@ -23,7 +23,6 @@ u.password = "pudding"
 u.username = "DT"
 u.create_default_tasks
 u.create_default_recurring_tasks
-u.generate_recurring_tasks
 u.save
 
 c1 = Company.new
@@ -72,13 +71,14 @@ t2.complete = false
 t2.user = User.last
 t2.save
 
+u.generate_recurring_tasks
+
 u2 = User.new
 u2.email = "harry@ga.co"
 u2.password = "trolling"
 u2.username = "HMAN"
 u2.create_default_tasks
 u2.create_default_recurring_tasks
-u2.generate_recurring_tasks
 u2.save
 
 t3 = Task.new
@@ -105,3 +105,5 @@ t5.due = Time.now - 2.days
 t5.complete = false
 t5.user = User.last
 t5.save
+
+u2.generate_recurring_tasks
