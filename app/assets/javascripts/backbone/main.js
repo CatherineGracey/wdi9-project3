@@ -3,6 +3,8 @@ var taskCollection = new TaskCollection();
 var companyCollection = new CompanyCollection();
 var jobCollection = new JobCollection();
 var jobTasksCollection = new TaskCollection();
+var companyTasksCollection = new TaskCollection();
+var companyJobsCollection = new JobCollection();
 
 var taskListView = new TaskListView({ collection: taskCollection });
 var companyListView = new CompanyListView({ collection: companyCollection });
