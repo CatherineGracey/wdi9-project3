@@ -35,8 +35,8 @@ $().ready(function() {
 
   $('#new-company').click(function() {
     // Render new task form, append to hidden-div
-      // Code here
-
+    var view = new NewCompanyView();
+    $('.hidden-div').html(view.render().el);
     // Reveal hidden-div
     $('.hidden-div').fadeIn("slow");
   });
