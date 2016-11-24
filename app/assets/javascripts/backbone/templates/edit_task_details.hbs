@@ -1,24 +1,28 @@
-<div class="row">
-  <div class="input-field col s12">
-    <input type="text" name="title" value="{{title}}" placeholder="title">
-    <label for="title">Enter a short description of this task.</label>
-  </div>
-</div>
+<div class="container" id="container-top-padding">
 
-<div class="row">
-  <div class="input-field col s12">
-    <textarea name="desc">{{desc}}</textarea>
-    <label for="desc">Enter a detailed description and notes for this task.</label>
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="text" name="title" value="{{title}}" placeholder="title">
+      <label for="title" class="active">Enter a short description of this task.</label>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="input-field col s12">
-    <input type="checkbox" name="completed" id="completed-task" {{#if completed_on}}checked{{/if}}>
-    <input type="date" name="due" value="{{due}}">
-    <label for="date">When is this task due?</label>
+  <div class="row">
+    <div class="input-field col s12">
+      <textarea name="desc" class="materialize-textarea">{{desc}}</textarea>
+      <label for="desc" class="active">Enter a detailed description and notes for this task.</label>
+    </div>
   </div>
-</div>
 
-<button class="btn waves-effect waves-light" type="submit" name="action" id="update-task-btn">Update</button>
-<button class="btn waves-effect waves-light" type="submit" name="action" id="delete-task-btn">Delete</button>
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="checkbox" name="completed" id="completed-task" {{#if completed_on}}checked{{/if}}>
+      <input type="date" name="due" class="datepicker" value="{{due}}">
+      <label for="date" class="active">When is this task due?</label>
+    </div>
+  </div>
+
+  <button class="btn waves-effect waves-light" type="submit" name="action" id="update-task-btn">Update</button>
+  <button class="btn waves-effect waves-light" type="submit" name="action" id="delete-task-btn">Delete</button>
+
+</div>
