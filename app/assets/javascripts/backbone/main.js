@@ -107,8 +107,6 @@ $().ready(function() {
 
   $('#search-task').bind('keyup', function(e) {
     if (e.keyCode == 13) {
-      // var view = new TaskListView({});
-      // debugger
       var strQueryInput = $(this).val().toLowerCase();
       var indexOfSymbol = strQueryInput.indexOf(":");
       var strSplitedQueryInput = strQueryInput.split(":", indexOfSymbol);
@@ -130,7 +128,6 @@ $().ready(function() {
 
           var objFilteredCompanyCollection = new CompanyCollection(arrFilteredCompanyCollection);
           var viewFilteredCompanyCollection = new TaskListView({ collection: objFilteredCompanyCollection });
-          debugger
           $('.hidden-div').html(viewFilteredCompanyCollection.render().el);
         } 
         else if (strSplitedQueryInput[0].trim() == "job") { //job search..
@@ -140,7 +137,6 @@ $().ready(function() {
 
           var objFilteredJobCollection = new JobCollection(arrFilteredJobCollection);
           var viewFilteredJobCollection = new TaskListView({ collection: objFilteredJobCollection });
-          debugger
           $('.hidden-div').html(viewFilteredJobCollection.render().el);
         }
       }
