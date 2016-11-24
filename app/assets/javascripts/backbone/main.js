@@ -30,7 +30,7 @@ $().ready(function() {
       selectYears: 15
     });
     // Reveal hidden-div
-    $('.hidden-div').fadeIn("slow");
+    $('.hidden-div').fadeIn();
   });
 
   $('#new-company').click(function() {
@@ -38,7 +38,7 @@ $().ready(function() {
       // Code here
 
     // Reveal hidden-div
-    $('.hidden-div').fadeIn("slow");
+    $('.hidden-div').fadeIn();
   });
 
 
@@ -57,7 +57,7 @@ $().ready(function() {
       var searchResultCollection = new TaskCollection(searchResult);
       var view = new TaskListView({collection: searchResultCollection});
       $('.hidden-div').html(view.render().el);
-      $('.hidden-div').fadeIn('slow');
+      $('.hidden-div').fadeIn();
     }
   });
 

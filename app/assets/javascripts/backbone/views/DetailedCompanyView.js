@@ -3,7 +3,8 @@ var DetailedCompanyView = Backbone.View.extend({
   events: {
     'click #edit-company-btn': 'editCompany',
     'click #delete-company-btn': 'deleteCompany',
-    'click #new-job': 'newJob'
+    'click #new-job-btn': 'newJob',
+    'click #new-task-btn': 'newTask'
   },
 
   template: HandlebarsTemplates['company_details'],
@@ -40,7 +41,6 @@ var DetailedCompanyView = Backbone.View.extend({
   },
 
   newJob: function() {
-    console.log('clicked');
     // Render new task form, append to hidden-div
     var view = new NewJobView();
     $('.hidden-div').html(view.render().el);
@@ -49,8 +49,19 @@ var DetailedCompanyView = Backbone.View.extend({
       selectYears: 15
     });
     // Reveal hidden-div
-    $('.hidden-div').fadeIn("slow");
+    $('.hidden-div').fadeIn();
+  },
 
+  newTask: function() {
+    // Render new task form, append to hidden-div
+    var view = new NewTaskView();
+    $('.hidden-div').html(view.render().el);
+    $('.datepicker').pickadate({
+      selectMonths: true,
+      selectYears: 15
+    });
+    // Reveal hidden-div
+    $('.hidden-div').fadeIn();
   }
 
 });
