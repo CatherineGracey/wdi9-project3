@@ -8,6 +8,12 @@ var companyListView = new CompanyListView({ collection: companyCollection });
 var jobListView = new JobListView({ collection: jobCollection });
 
 $().ready(function() {
+  $(document).keyup(function(e) {
+    if (e.keyCode == 27) {
+      $('.hidden-div').fadeOut();
+      $('.x').fadeOut();
+    }
+  });
 
   $('#new-task').click(function() {
     // Render new task form, append to hidden-div
@@ -17,6 +23,7 @@ $().ready(function() {
       selectMonths: true,
       selectYears: 15
     });
+    $('select').material_select();
     // Reveal hidden-div
     $('.hidden-div').fadeIn();
     $('.x').fadeIn();
@@ -30,6 +37,7 @@ $().ready(function() {
       selectMonths: true,
       selectYears: 15
     });
+    $('select').material_select();
     // Reveal hidden-div
     $('.hidden-div').fadeIn();
     $('.x').fadeIn();
@@ -57,13 +65,11 @@ $().ready(function() {
   $('#search-task').focusout(function() {
       $(this).val("Search");
   });
-  $('#search-task').bind('keypress', function(e) {
+  $('#search-task').bind('keyup', function(e) {
     if (e.keyCode == 13) {
       var queryInput = $(this).val();
-      // debugger
       var taskCollectionJson = taskCollection.toJSON();
       var filteredTask = _.filter(taskCollectionJson, function(Object) {
-
          return Object.title.includes(queryInput);
       })
 
@@ -73,7 +79,6 @@ $().ready(function() {
       $('.hidden-div').html(view.render().el);
       $('.hidden-div').fadeIn();
       $('.x').fadeIn();
-
 
     }
   });

@@ -20,7 +20,9 @@ class JobsController < ApplicationController
       job = Job.new
       job.user_id = session[:user_id]
       job.job_status = JobStatus.find(params[:status]) if params[:status]
-      job.company = Company.find(params[:company]) if params[:company]
+      if params[:company_id] != 'NaN'
+        job.company = Company.find(params[:company_id])
+      end
       job.title = params[:title]
       job.pros = params[:pros]
       job.cons = params[:cons]

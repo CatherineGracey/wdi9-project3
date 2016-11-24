@@ -16,11 +16,11 @@ class TasksController < ApplicationController
       task.due = params[:due]
       task.complete = false
       task.user_id = session[:user_id]
-      if params[:company]
-        task.company = Company.find(params[:company])
+      if params[:company_id] != 'NaN'
+        task.company = Company.find(params[:company_id])
       end
-      if params[:job]
-        task.job = Jobs.find(params[:job])
+      if params[:job_id] != 'NaN'
+        task.job = Job.find(params[:job_id])
       end
       if task.save
         render json: task

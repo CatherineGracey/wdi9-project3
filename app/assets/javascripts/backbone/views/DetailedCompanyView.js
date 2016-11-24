@@ -55,10 +55,10 @@ var DetailedCompanyView = Backbone.View.extend({
       selectMonths: true,
       selectYears: 15
     });
+    $('select').material_select();
     // Reveal hidden-div
     $('.hidden-div').fadeIn();
     $('.x').fadeIn();
-
   },
 
   newTask: function() {
@@ -69,10 +69,10 @@ var DetailedCompanyView = Backbone.View.extend({
       selectMonths: true,
       selectYears: 15
     });
+    $('select').material_select();
     // Reveal hidden-div
     $('.hidden-div').fadeIn();
     $('.x').fadeIn();
-
   }
 
 });

@@ -33,7 +33,8 @@ var NewCompanyView = Backbone.View.extend({
         taskCollection.add(task);
       });
     });
-    this.hideForm();
+    $('.hidden-div').fadeOut();
+    $('.x').fadeOut();
   }
 
 });
