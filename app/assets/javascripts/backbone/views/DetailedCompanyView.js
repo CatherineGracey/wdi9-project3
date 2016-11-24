@@ -43,6 +43,7 @@ var DetailedCompanyView = Backbone.View.extend({
       method: 'delete'
     }
     $.ajax(options);
+    // Remove linked front end models
     companyCollection.remove(model);
     var companyTasks = [];
     taskCollection.each(function(task_model) {
@@ -51,6 +52,13 @@ var DetailedCompanyView = Backbone.View.extend({
       }
     });
     taskCollection.remove(companyTasks);
+    var companyJobs = [];
+    jobCollection.each(function(job_model) {
+      if (job_model.get('company_id') == model.get('id')) {
+        companyJobs.push(job_model);
+      }
+    });
+    jobCollection.remove(companyJobs);
     $('.task-detail').html('')
   },
 
