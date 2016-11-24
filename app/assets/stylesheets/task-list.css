@@ -113,3 +113,7 @@ body {
   margin-left: 2em;
   font-size: 1em;
 }
+  
+.complete {
+  text-decoration: line-through;
+}
