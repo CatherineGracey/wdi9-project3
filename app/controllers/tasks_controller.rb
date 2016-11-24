@@ -32,6 +32,32 @@ class TasksController < ApplicationController
     end
   end
 
+  def create_recurring
+    if session[:user_id]
+      rt = RecurringTask.new
+      rt.title = params[:title] #Task name to display when task is generated
+      rt.desc = params[:desc] #Task description
+      rt.firstdue = params[:due] #Date user sets that the task is first due
+      rt.frequency = params[:frequency] #Frequency with which the task should be generated
+      rt.prior = params[:prior] #Amount of time between when the task is generated and due next
+      rt.user_id = session[:user_id]
+      if params[:company]
+        rt.company = Company.find(params[:company])
+      end
+      if params[:job]
+        rt.job = Jobs.find(params[:job])
+      end
+      if rt.save
+        tasks = User.find(rt.user_id).generate_recurring_tasks
+        render json: tasks
+      else
+        render json: {error: "Task has failed to save."}
+      end
+    else
+      redirect_to '/'
+    end
+  end
+
   def show
     if Task.exists? params[:id]
       task = Task.find params[:id]

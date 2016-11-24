@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/tasks', to: 'tasks#all'
   get '/tasks/:id', to: 'tasks#show'
   post '/task', to: 'tasks#create'
+  post '/tasks', to: 'tasks#create_recurring'
   post '/tasks/:id/edit', to: 'tasks#update'
   post '/tasks/:id/complete', to: 'tasks#complete'
   delete '/tasks/:id/delete', to: 'tasks#destroy'

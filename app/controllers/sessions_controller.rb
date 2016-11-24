@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
 
       if user && user.authenticate(params[:password])
         log_in user
+        user.generate_recurring_tasks
         redirect_to '/'
       else
         flash[:danger] = 'Invalid Password Combination!'
@@ -15,6 +16,8 @@ class SessionsController < ApplicationController
       user.password = params[:password]
       user.email = params[:email]
       user.create_default_tasks
+      user.create_default_recurring_tasks
+      user.generate_recurring_tasks
       if user.save
         log_in user
         redirect_to '/'
