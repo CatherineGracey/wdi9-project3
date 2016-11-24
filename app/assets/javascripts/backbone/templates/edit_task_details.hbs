@@ -2,22 +2,45 @@
 
   <div class="row">
     <div class="input-field col s12">
-      <input type="text" name="title" value="{{title}}" placeholder="title">
+      <select name="company" id="edit-task-company-name">
+        <option value="">None</option>
+        {{#each companies}}
+          <option value="{{this.id}}">{{this.name}}</option>
+        {{/each}}
+      </select>
+      <label for="company">Link task to a company</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <select name="job" id="edit-task-job-title">
+        <option value="">None</option>
+        {{#each jobs}}
+        <option value="{{this.id}}">{{this.title}}</option>
+        {{/each}}
+      </select>
+      <label for="job">Link task to a job</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="text" name="title" id="edit-task-title" value="{{title}}" placeholder="title">
       <label for="title" class="active">Enter a short description of this task.</label>
     </div>
   </div>
 
   <div class="row">
     <div class="input-field col s12">
-      <textarea name="desc" class="materialize-textarea">{{desc}}</textarea>
+      <textarea name="desc" id="edit-task-desc" class="materialize-textarea">{{desc}}</textarea>
       <label for="desc" class="active">Enter a detailed description and notes for this task.</label>
     </div>
   </div>
 
   <div class="row">
     <div class="input-field col s12">
-      <input type="checkbox" name="completed" id="completed-task" {{#if completed_on}}checked{{/if}}>
-      <input type="date" name="due" class="datepicker" value="{{due}}">
+      <!-- <input type="checkbox" name="completed" id="completed-task" {{#if completed_on}}checked{{/if}}> -->
+      <input type="datetime-local" name="due" class="datepicker" id="edit-task-datepicker" value="{{due}}">
       <label for="date" class="active">When is this task due?</label>
     </div>
   </div>
