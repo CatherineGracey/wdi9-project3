@@ -30,15 +30,15 @@ $().ready(function() {
       selectYears: 15
     });
     // Reveal hidden-div
-    $('.hidden-div').fadeIn("slow");
+    $('.hidden-div').fadeIn();
   });
 
   $('#new-company').click(function() {
     // Render new task form, append to hidden-div
-      // Code here
-
+    var view = new NewCompanyView();
+    $('.hidden-div').html(view.render().el);
     // Reveal hidden-div
-    $('.hidden-div').fadeIn("slow");
+    $('.hidden-div').fadeIn();
   });
 
 
@@ -64,7 +64,7 @@ $().ready(function() {
       var view = new TaskListView({ collection: filteredTaskCollection });
     
       $('.hidden-div').html(view.render().el);
-      $('.hidden-div').fadeIn('slow');
+      $('.hidden-div').fadeIn();
     }
   });
 

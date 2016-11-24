@@ -2,7 +2,8 @@ var DetailedTaskView = Backbone.View.extend({
 
   events: {
     'click #edit-task-btn': 'editTask',
-    'click #delete-task-btn': 'deleteTask'
+    'click #delete-task-btn': 'deleteTask',
+    'click #completed-task': 'completeTask'
   },
 
   template: HandlebarsTemplates['task_details'],
@@ -14,11 +15,24 @@ var DetailedTaskView = Backbone.View.extend({
   },
 
   editTask: function() {
-    
   },
 
   deleteTask: function() {
+    var model = this.model
+    var options = {
+      url: '/tasks/' + model.get('id') + '/delete',
+      method: 'delete'
+    }
+    $.ajax(options);
+    taskCollection.remove(model);
+    $('.task-detail').html('')
+  },
 
+  completeTask: function() {
+    var model = this.model
+    $.post('/tasks/' + model.get('id') + '/complete').done(function(response) {
+      model.set(response);
+    });
   }
 
 });
