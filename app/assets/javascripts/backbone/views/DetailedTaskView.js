@@ -18,6 +18,14 @@ var DetailedTaskView = Backbone.View.extend({
   },
 
   deleteTask: function() {
+    var model = this.model
+    var options = {
+      url: '/tasks/' + model.get('id') + '/delete',
+      method: 'delete'
+    }
+    $.ajax(options);
+    taskCollection.remove(model);
+    $('.task-detail').html('')
   },
 
   completeTask: function() {
@@ -25,7 +33,6 @@ var DetailedTaskView = Backbone.View.extend({
     $.post('/tasks/' + model.get('id') + '/complete').done(function(response) {
       model.set(response);
     });
-
   }
 
 });
