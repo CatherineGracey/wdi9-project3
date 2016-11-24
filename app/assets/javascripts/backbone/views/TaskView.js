@@ -8,9 +8,18 @@ var TaskView = Backbone.View.extend({
 
   template: HandlebarsTemplates['task'],
 
+  initialize: function() {
+    this.listenTo(this.model, 'change', this.render);
+  },
+
   render: function() {
     var html = this.template(this.model.toJSON());
     this.$el.html(html);
+    if (this.model.get('complete')){
+      this.$el.addClass('complete');
+    } else {
+      this.$el.removeClass('complete');
+    }
     return this;
   },
 
