@@ -95,3 +95,7 @@ body {
 #container-top-padding {
   padding-top: .1em;
 }
+
+#block {
+  float: left;
+}

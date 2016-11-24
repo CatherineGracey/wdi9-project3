@@ -3,7 +3,8 @@
 
   <div class="row">
     <h2>{{title}}</h2>
-    <h5 id='at-company' style="cursor: pointer">{{company_name}}</h5>
+    <h5>Company: <span id='at-company' style="cursor: pointer">{{company_name}}</span>
+    </h5>
   </div>
 
   <ul class="collection">
@@ -36,8 +37,18 @@
     </div>
   </ul>
 
+  <!-- Task title and add task button -->
+  <div class="row" style="margin-bottom: 0;">
+    <h4 id="block">Tasks</h4>
+    <button
+      id="new-task fixed"
+      class="btn waves-effect waves-light" type="submit"
+      name="action"
+      style="margin: 1.14rem 0 0.912rem 0; float: right;">
+      Add Task
+    </button>
+  </div>
 
-  <h4>Tasks</h4>
   <ul id="tasks-snapshot">
   </ul>
 
