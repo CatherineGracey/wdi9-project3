@@ -118,6 +118,10 @@ body {
   text-decoration: line-through;
 }
 
+.task-list-container .complete {
+  display: none;
+}
+
 .login-page {
   width: 60%;
 }
