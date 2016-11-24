@@ -57,32 +57,6 @@ $().ready(function() {
     $('.x').fadeOut();
   });
 
-  // Search box functionality:
-  $('#search-task').val("Search");
-  $('#search-task').focus(function() {
-    $(this).val("");
-  });
-  $('#search-task').focusout(function() {
-      $(this).val("Search");
-  });
-  $('#search-task').bind('keyup', function(e) {
-    if (e.keyCode == 13) {
-      var queryInput = $(this).val();
-      var taskCollectionJson = taskCollection.toJSON();
-      var filteredTask = _.filter(taskCollectionJson, function(Object) {
-         return Object.title.toLowerCase().includes(queryInput.toLowerCase());
-      })
-
-      var filteredTaskCollection = new TaskCollection(filteredTask);
-      var view = new TaskListView({ collection: filteredTaskCollection });
-
-      $('.hidden-div').html(view.render().el);
-      $('.hidden-div').fadeIn();
-      $('.x').fadeIn();
-
-    }
-  });
-
   // Populate collections with AJAX call
   taskCollection.fetch()
   companyCollection.fetch()
@@ -119,5 +93,58 @@ $().ready(function() {
     $('#logout').submit();
   });
 
+  // Search box functionality:
+  $('#search-task').val("Search");
+  $('#search-task').focus(function() {
+    $(this).val("");
+  });
+  $('#search-task').focusout(function() {
+      $(this).val("Search");
+  });
+
+  $('#search-task').bind('keyup', function(e) {
+    if (e.keyCode == 13) {
+      // var view = new TaskListView({});
+      // debugger
+      var strQueryInput = $(this).val().toLowerCase();
+      var indexOfSymbol = strQueryInput.indexOf(":");
+      var strSplitedQueryInput = strQueryInput.split(":", indexOfSymbol);
+      if (indexOfSymbol == -1) { //task search... by default..
+        var arrFilteredTaskCollection = _.filter(taskCollection.toJSON(), function(Object) {
+          return Object.title.toLowerCase().trim().includes(strQueryInput.trim());
+        });
+
+        var objFilteredTaskCollection = new TaskCollection(arrFilteredTaskCollection);
+        var viewFilteredTaskList = new TaskListView({ collection: objFilteredTaskCollection });
+        debugger
+        $('.hidden-div').html(viewFilteredTaskList.render().el);
+      } 
+      else {
+        if (strSplitedQueryInput[0].trim() == "company") { //Place company search here..
+          var arrFilteredCompanyCollection = _.filter(companyCollection.toJSON(), function(Object){
+            return Object.name.toLowerCase().trim().includes(strSplitedQueryInput[1].trim());
+          });
+
+          var objFilteredCompanyCollection = new CompanyCollection(arrFilteredCompanyCollection);
+          var viewFilteredCompanyCollection = new TaskListView({ collection: objFilteredCompanyCollection });
+          debugger
+          $('.hidden-div').html(viewFilteredCompanyCollection.render().el);
+        } 
+        else if (strSplitedQueryInput[0].trim() == "job") { //job search..
+          var arrFilteredJobCollection = _.filter(jobCollection.toJSON(), function(Object) {
+            return Object.title.toLowerCase().trim().includes(strSplitedQueryInput[1].trim());
+          });
+
+          var objFilteredJobCollection = new JobCollection(arrFilteredJobCollection);
+          var viewFilteredJobCollection = new TaskListView({ collection: objFilteredJobCollection });
+          debugger
+          $('.hidden-div').html(viewFilteredJobCollection.render().el);
+        }
+      }
+      
+      $('.hidden-div').fadeIn();
+      $('.x').fadeIn();
+    }
+  });
 
 });
