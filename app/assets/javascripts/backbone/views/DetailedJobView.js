@@ -17,7 +17,7 @@ var DetailedJobView = Backbone.View.extend({
     var jobTasks = taskCollection.filter(function(model) {
       return model.get('job_id') === this.model.get('id');
     }, this);
-    var jobTasksCollection = new TaskCollection(jobTasks);
+    jobTasksCollection = new TaskCollection(jobTasks);
     var jobTasksList = new TaskListView({ collection: jobTasksCollection });
     this.$el.find('#tasks-snapshot').append(jobTasksList.render().el);
 

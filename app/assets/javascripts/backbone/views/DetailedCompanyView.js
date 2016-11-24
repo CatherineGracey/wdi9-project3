@@ -17,7 +17,7 @@ var DetailedCompanyView = Backbone.View.extend({
     var companyTasks = taskCollection.filter(function(model) {
       return model.get('company_id') === this.model.get('id');
     }, this);
-    var companyTasksCollection = new TaskCollection(companyTasks);
+    companyTasksCollection = new TaskCollection(companyTasks);
     var companyTasksList = new TaskListView({ collection: companyTasksCollection });
     this.$el.find('#tasks-snapshot').append(companyTasksList.render().el);
 
@@ -25,7 +25,7 @@ var DetailedCompanyView = Backbone.View.extend({
     var companyJobs = jobCollection.filter(function(model) {
       return model.get('company_id') === this.model.get('id');
     }, this);
-    var companyJobsCollection = new JobCollection(companyJobs);
+    companyJobsCollection = new JobCollection(companyJobs);
     var companyJobsList = new JobListView({ collection: companyJobsCollection });
     this.$el.find('#jobs-snapshot').append(companyJobsList.render().el);
 
