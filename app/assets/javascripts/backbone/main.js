@@ -70,7 +70,6 @@ $().ready(function() {
       var queryInput = $(this).val();
       var taskCollectionJson = taskCollection.toJSON();
       var filteredTask = _.filter(taskCollectionJson, function(Object) {
-
          return Object.title.includes(queryInput);
       })
 
@@ -80,7 +79,6 @@ $().ready(function() {
       $('.hidden-div').html(view.render().el);
       $('.hidden-div').fadeIn();
       $('.x').fadeIn();
-
 
     }
   });

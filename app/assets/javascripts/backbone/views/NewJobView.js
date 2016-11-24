@@ -49,6 +49,7 @@ var NewJobView = Backbone.View.extend({
     }
     jobCollection.add(options.data);
     $('.hidden-div').fadeOut();
+    $('.x').fadeOut();
   }
 
 });
