@@ -43,7 +43,6 @@ var DetailedJobView = Backbone.View.extend({
     var currentCompany = companyCollection.filter(function(company) {
       return company.get('name') === this.$el.find('#at-company').text();
     }, this);
-    console.log(currentCompany[0]);
     var detailedCompanyView = new DetailedCompanyView({model: currentCompany[0]});
     $('.task-detail').html(detailedCompanyView.render().el);
 
