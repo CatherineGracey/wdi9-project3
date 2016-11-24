@@ -13,18 +13,22 @@ class User < ApplicationRecord
     # task_id: nil,
 
     self.recurring_tasks.each do |rt|
-      if !rt.task
+      if !rt.task || rt.task.complete == true
       # If no previous task exists yet, generate the task
       # If the previous task has not been checked off, do not generate a new one
       # If the previous task has been checked off, check if a new task is due to be created yet
         t = Task.new
         t.title = rt[:title]
         t.desc = rt[:desc]
-        t.due = rt[:firstdue]
         t.complete = false
         t.user = self
         t.company_id = rt[:company_id]
         t.job_id = rt[:job_id]
+        if !rt.task
+          t.due = rt[:firstdue]
+        else
+          t.due = rt.task.due + rt.prior
+        end
         t.save
         t.reload
         new_tasks << t
