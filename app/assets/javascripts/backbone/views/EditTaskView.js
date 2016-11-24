@@ -8,17 +8,25 @@ var EditTaskView = Backbone.View.extend({
   template: HandlebarsTemplates['edit_task_details'],
 
   render: function() {
-    var html = this.template(task);
+    var model = this.model.toJSON();
+    model.due = model.due.substring(0, 10);
+    var html = this.template(model);
     this.$el.html(html);
     return this;
   },
 
   updateTask: function() {
-
   },
 
   deleteTask: function() {
-
+    var model = this.model;
+    var options = {
+      url: '/tasks/' + model.get('id') + '/delete',
+      method: 'delete'
+    };
+    $.ajax(options);
+    taskCollection.remove(model);
+    $('.task-detail').html('');
   }
 
 });

@@ -15,6 +15,13 @@ var DetailedTaskView = Backbone.View.extend({
   },
 
   editTask: function() {
+    var editTaskView = new EditTaskView({model: this.model})
+    $('.task-detail').html(editTaskView.render().el);
+    // Make Task display 'active'
+    $('.task-list a').removeClass('active');
+    this.$el.find('a').addClass('active');
+    window.scrollTo(0, 0);
+    $('.hidden-div').fadeOut();
   },
 
   deleteTask: function() {
