@@ -44,6 +44,13 @@ var DetailedCompanyView = Backbone.View.extend({
     }
     $.ajax(options);
     companyCollection.remove(model);
+    var companyTasks = [];
+    taskCollection.each(function(task_model) {
+      if (task_model.get('company_id') == model.get('id')) {
+        companyTasks.push(task_model);
+      }
+    });
+    taskCollection.remove(companyTasks);
     $('.task-detail').html('')
   },
 
