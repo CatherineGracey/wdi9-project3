@@ -13,7 +13,9 @@ var TaskView = Backbone.View.extend({
   },
 
   render: function() {
-    var html = this.template(this.model.toJSON());
+    var taskJSON = this.model.toJSON();
+    taskJSON.due = taskJSON.due.slice(0, 10);
+    var html = this.template(taskJSON);
     this.$el.html(html);
     if (this.model.get('complete')){
       this.$el.addClass('complete');
