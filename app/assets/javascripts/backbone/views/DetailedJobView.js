@@ -25,7 +25,15 @@ var DetailedJobView = Backbone.View.extend({
   },
 
   editJob: function() {
-
+    model = this.model
+    var editJobView = new EditJobView({model: model})
+    $('.task-detail').html(editJobView.render().el);
+    // Make Task display 'active'
+    $('.task-list a').removeClass('active');
+    this.$el.find('a').addClass('active');
+    window.scrollTo(0, 0);
+    $('.hidden-div').fadeOut();
+    $('#edit-job-company-name').material_select();
   },
 
   deleteJob: function() {

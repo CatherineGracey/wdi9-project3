@@ -33,7 +33,14 @@ var DetailedCompanyView = Backbone.View.extend({
   },
 
   editCompany: function() {
-
+    model = this.model
+    var editCompanyView = new EditCompanyView({model: model})
+    $('.task-detail').html(editCompanyView.render().el);
+    // Make Task display 'active'
+    $('.task-list a').removeClass('active');
+    this.$el.find('a').addClass('active');
+    window.scrollTo(0, 0);
+    $('.hidden-div').fadeOut();
   },
 
   deleteCompany: function() {

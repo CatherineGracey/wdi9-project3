@@ -1,4 +1,4 @@
-var EditTaskView = Backbone.View.extend({
+var EditJobView = Backbone.View.extend({
 
   events: {
     'click #update-job-btn': 'updateJob',
@@ -9,7 +9,6 @@ var EditTaskView = Backbone.View.extend({
 
   render: function() {
     var model = this.model.toJSON();
-    model.due = model.due.substring(0, 10);
     // Compile list of companies and jobs
     model.companies = [{id: "", name: "None"}];
     companyCollection.each(function(company) {
