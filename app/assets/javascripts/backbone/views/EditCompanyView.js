@@ -20,22 +20,27 @@ var EditCompanyView = Backbone.View.extend({
       url: '/companies/' + model.get('id') + '/edit',
       method: 'post',
       data: {
-        title: $('#edit-task-title').val(),
-        desc: $('#edit-task-desc').val(),
-        due: $('#edit-task-datepicker').val(),
-        company_id: $('#edit-task-company-name').val(),
-        job_id: $('#edit-task-job-title').val()
+        name: $('#edit-company-name').val(),
+        website: $('#edit-company-website').val(),
+        pros: $('#edit-company-pros').val(),
+        cons: $('#edit-company-cons').val(),
+        size: $('#edit-company-size').val(),
+        focus: $('#edit-company-focus').val(),
+        industry: $('#edit-company-industry').val(),
       }
     }
     console.log(options)
     $.ajax(options).done(function(response){
       if (!response.error){
-        model.set({'title': response.title});
-        model.set({'desc': response.desc});
-        var due = new Date(response.due);
-        model.set({'due': due.toISOString()});
-        model.set({'company_id': response.company_id});
-        model.set({'job_id': response.job_id});
+        model.set({'name': response.name});
+        model.set({'website': response.website});
+        model.set({'pros': response.pros});
+        model.set({'cons': response.cons});
+        model.set({'size': response.size});
+        model.set({'focus': response.focus});
+        model.set({'industry': response.industry});
+        var detailedCompanyView = new DetailedCompanyView({model: model})
+        $('.task-detail').html(detailedCompanyView.render().el);
       }
     });
   },
