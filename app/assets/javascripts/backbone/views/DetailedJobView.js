@@ -34,6 +34,10 @@ var DetailedJobView = Backbone.View.extend({
     window.scrollTo(0, 0);
     $('.hidden-div').fadeOut();
     $('#edit-job-company-name').material_select();
+    $('.datepicker').pickadate({
+      selectMonths: true,
+      selectYears: 15
+    });
   },
 
   deleteJob: function() {

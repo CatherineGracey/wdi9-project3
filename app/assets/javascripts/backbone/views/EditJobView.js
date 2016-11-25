@@ -9,6 +9,9 @@ var EditJobView = Backbone.View.extend({
 
   render: function() {
     var model = this.model.toJSON();
+    if (model.date_applied){
+      model.date_applied = model.date_applied.substring(0, 10);
+    }
     // Compile list of companies and jobs
     model.companies = [{id: "", name: "None"}];
     companyCollection.each(function(company) {
@@ -26,41 +29,62 @@ var EditJobView = Backbone.View.extend({
     return this;
   },
 
-  updateTask: function() {
+  updateJob: function() {
     var model = this.model
     var options = {
-      url: '/tasks/' + model.get('id') + '/edit',
+      url: '/jobs/' + model.get('id') + '/edit',
       method: 'post',
       data: {
-        title: $('#edit-task-title').val(),
-        desc: $('#edit-task-desc').val(),
-        due: $('#edit-task-datepicker').val(),
-        company_id: $('#edit-task-company-name').val(),
-        job_id: $('#edit-task-job-title').val()
+        title: $('#edit-job-title').val(),
+        pros: $('#edit-job-pros').val(),
+        cons: $('#edit-job-cons').val(),
+        date_applied: $('#edit-job-date-applied').val(),
+        contact_name: $('#edit-job-contact-name').val(),
+        contact_phone: $('#edit-job-contact-phone').val(),
+        contact_email: $('#edit-job-contact-email').val(),
+        located: $('#edit-job-located').val(),
+        salary: $('#edit-job-salary').val(),
+        notes: $('#edit-job-notes').val(),
+        company_id: $('#edit-job-company-name').val(),
       }
     }
     console.log(options)
     $.ajax(options).done(function(response){
       if (!response.error){
         model.set({'title': response.title});
-        model.set({'desc': response.desc});
-        var due = new Date(response.due);
-        model.set({'due': due.toISOString()});
+        model.set({'pros': response.pros});
+        model.set({'cons': response.cons});
+        var date_applied = new Date(response.date_applied);
+        model.set({'date_applied': date_applied.toISOString()});
+        model.set({'contact_name': response.contact_name});
+        model.set({'contact_phone': response.contact_phone});
+        model.set({'contact_email': response.contact_email});
+        model.set({'located': response.located});
+        model.set({'salary': response.salary});
+        model.set({'notes': response.notes});
         model.set({'company_id': response.company_id});
-        model.set({'job_id': response.job_id});
+        var detailedJobView = new DetailedJobView({model: model})
+        $('.task-detail').html(detailedJobView.render().el);
       }
     });
   },
 
-  deleteTask: function() {
-    var model = this.model;
+  deleteJob: function() {
+    var model = this.model
     var options = {
-      url: '/tasks/' + model.get('id') + '/delete',
+      url: '/jobs/' + model.get('id') + '/delete',
       method: 'delete'
-    };
+    }
     $.ajax(options);
-    taskCollection.remove(model);
-    $('.task-detail').html('');
+    jobCollection.remove(model);
+    var jobTasks = [];
+    taskCollection.each(function(task_model) {
+      if (task_model.get('job_id') == model.get('id')) {
+        jobTasks.push(task_model);
+      }
+    });
+    taskCollection.remove(jobTasks);
+    $('.task-detail').html('')
   }
 
 });
