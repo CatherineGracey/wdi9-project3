@@ -36,6 +36,13 @@ var DetailedJobView = Backbone.View.extend({
     }
     $.ajax(options);
     jobCollection.remove(model);
+    var jobTasks = [];
+    taskCollection.each(function(task_model) {
+      if (task_model.get('job_id') == model.get('id')) {
+        jobTasks.push(task_model);
+      }
+    });
+    taskCollection.remove(jobTasks);
     $('.task-detail').html('')
   },
 
