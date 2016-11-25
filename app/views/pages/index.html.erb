@@ -1,8 +1,8 @@
 <div class="root">
 
-  <h1>Pocket Maltby</h1>
-
   <div class="container login-page">
+    
+    <h1>Pocket Maltby</h1>
     <% flash.each do |message_type, message| %>
       <div class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>
