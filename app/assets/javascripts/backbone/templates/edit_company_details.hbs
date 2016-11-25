@@ -1,0 +1,59 @@
+<div class="container">
+
+  <h3 id="new-task-title">Edit Company</h3>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="text" name="name" value="{{name}}" id="edit-company-name" placeholder="Name">
+      <label for="name">Enter Company Name</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <!-- USER VALIDATION TO INPUT WEBSITE AS WWW.WEBSITE.COM -->
+      <input type="url" value="{{website}}" placeholder="Website" id="edit-company-website" name="website">
+      <label for="website">Company website URL</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="text" value="{{pros}}" placeholder="Pros" id="edit-company-pros" name="pros">
+      <label for="pros">Positive aspects of this company</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="text" value="{{cons}}" placeholder="Cons" id="edit-company-cons" name="cons">
+      <label for="cons">Negative aspects of this company</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="text" value="{{size}}" placeholder="Size" id="edit-company-size" name="size">
+      <label for="size">Company size</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="text" value="{{focus}}" placeholder="Focus" id="edit-company-focus" name="focus">
+      <label for="focus">Company Focus</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="text" value="{{industry}}" placeholder="Industry" id="edit-company-industry" name="industry">
+      <label for="industry">Company industry</label>
+    </div>
+  </div>
+
+  <button class="btn waves-effect waves-light" type="submit" name="action" id="edit-company-btn">Update</button>
+  <button class="btn waves-effect waves-light" type="submit" name="action" id="delete-company-btn">Delete</button>
+
+
+</div>
