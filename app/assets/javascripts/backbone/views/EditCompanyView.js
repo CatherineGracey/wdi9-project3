@@ -1,4 +1,4 @@
-var EditTaskView = Backbone.View.extend({
+var EditCompanyView = Backbone.View.extend({
 
   events: {
     'click #update-company-btn': 'updateCompany',
@@ -9,30 +9,6 @@ var EditTaskView = Backbone.View.extend({
 
   render: function() {
     var model = this.model.toJSON();
-    model.due = model.due.substring(0, 10);
-    // Compile list of companies and jobs
-    model.companies = [{id: "", name: "None"}];
-    companyCollection.each(function(company) {
-      model.companies.push({ id: company.get('id'), name: company.get('name') });
-    });
-    for (var i = 0; i < model.companies.length; i++){
-      if (model.companies[i].id === model.company_id){
-        var company = model.companies.splice(i, 1);
-        model.companies.unshift(company[0]);
-        break;
-      }
-    }
-    model.jobs = [{id: "", title: "None"}];
-    jobCollection.each(function(job) {
-      model.jobs.push({ id: job.get('id'), title: job.get('title') });
-    });
-    for (var i = 0; i < model.jobs.length; i++){
-      if (model.jobs[i].id === model.job_id){
-        var job = model.jobs.splice(i, 1);
-        model.jobs.unshift(job[0]);
-        break;
-      }
-    }
     var html = this.template(model);
     this.$el.html(html);
     return this;
@@ -41,7 +17,7 @@ var EditTaskView = Backbone.View.extend({
   updateCompany: function() {
     var model = this.model
     var options = {
-      url: '/tasks/' + model.get('id') + '/edit',
+      url: '/companies/' + model.get('id') + '/edit',
       method: 'post',
       data: {
         title: $('#edit-task-title').val(),
