@@ -1,0 +1,90 @@
+<div class="container">
+
+  <h3 id="new-task-title">Edit Job</h3>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <select name="company" id="edit-job-company-name">
+        {{#each companies}}
+          <option value="{{this.id}}">{{this.name}}</option>
+        {{/each}}
+      </select>
+      <label for="company">Link job to a company</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="text" name="title" value="{{title}}" placeholder="title">
+      <label for="title">Enter job title</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="text" value="{{pros}}" placeholder="Pros" name="pros">
+      <label for="pros">Positive aspects of this role</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="text" value="{{cons}}" placeholder="Cons" name="cons">
+      <label for="cons">Negative aspects of this role</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input name="applied" type="date" class="datepicker" value="{{date_applied}}">
+      <label>What date did you apply for this job?</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="text" value="{{contact_name}}" placeholder="Contact Name" name="contact_name">
+      <label for="contact_name">Contact name</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="text" value="{{contact_phone}}" placeholder="Contact Phone" name="contact_phone">
+      <label for="contact_phone">Contact Phone</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="text" value="{{contact_email}}" placeholder="Contact Email" name="contact_email">
+      <label for="contact_email">Contact Email</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="text" value="{{located}}" placeholder="Job Location" name="located">
+      <label for="located">Job Location</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="text" value="{{salary}}" placeholder="Salary" name="salary">
+      <label for="salary">Salary</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="text" value="{{notes}}" placeholder="Notes" name="notes">
+      <label for="notes">Notes</label>
+    </div>
+  </div>
+
+  <button class="btn waves-effect waves-light" type="submit" name="action" id="edit-job-btn">Update</button>
+  <button class="btn waves-effect waves-light" type="submit" name="action" id="delete-job-btn">Delete</button>
+
+
+</div>
