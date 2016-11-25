@@ -53,7 +53,14 @@ var EditTaskView = Backbone.View.extend({
     }
     console.log(options)
     $.ajax(options).done(function(response){
-      console.log(response);
+      if (!response.error){
+        model.set({'title': response.title});
+        model.set({'desc': response.desc});
+        var due = new Date(response.due);
+        model.set({'due': due.toISOString()});
+        model.set({'company_id': response.company_id});
+        model.set({'job_id': response.job_id});
+      }
     });
   },
 
