@@ -62,8 +62,10 @@ class JobsController < ApplicationController
     if Job.exists? params[:id]
       job = Job.find params[:id]
       if job.user_id == session[:user_id]
-        job.job_status = JobStatus.find(params[:status])
-        job.company = Company.find(params[:company])
+        job.job_status = JobStatus.find(params[:status]) if params[:status]
+        if params[:company_id] != 'NaN'
+          job.company = Company.find(params[:company_id])
+        end
         job.title = params[:title]
         job.pros = params[:pros]
         job.cons = params[:cons]
@@ -79,7 +81,6 @@ class JobsController < ApplicationController
         else
           render json: {error: "Job has failed to update."}
         end
-        render json: job
       else
         render json: {error: "ID is assigned to a different user."}
       end
