@@ -51,7 +51,6 @@ var EditTaskView = Backbone.View.extend({
         job_id: $('#edit-task-job-title').val()
       }
     }
-    console.log(options)
     $.ajax(options).done(function(response){
       if (!response.error){
         model.set({'title': response.title});
@@ -61,6 +60,8 @@ var EditTaskView = Backbone.View.extend({
         model.set({'company_id': response.company_id});
         model.set({'job_id': response.job_id});
       }
+      var detailedTaskView = new DetailedTaskView({model: model})
+      $('.task-detail').html(detailedTaskView.render().el);
     });
   },
 
