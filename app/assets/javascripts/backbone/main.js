@@ -96,7 +96,7 @@ $().ready(function() {
     $('#logout').submit();
   });
 
-  // Search box functionality:
+  // Search box functionality
   $('#search-task').val("Search");
   $('#search-task').focus(function() {
     $(this).val("");
@@ -117,7 +117,6 @@ $().ready(function() {
 
         var objFilteredTaskCollection = new TaskCollection(arrFilteredTaskCollection);
         var viewFilteredTaskList = new TaskListView({ collection: objFilteredTaskCollection });
-        debugger
         $('.hidden-div').html(viewFilteredTaskList.render().el);
       } 
       else {
