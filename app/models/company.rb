@@ -5,10 +5,10 @@ class Company < ApplicationRecord
 
   def create_default_tasks user_id
     tasks = [{
-      title: "Follow company on LinkedIn",
-      desc: "Many companies list vacancies on LinkedIn. By following these companies you will be alerted to any vacancies in your news feed as soon as they are advertised."
+      title: "Follow #{self.name} on LinkedIn",
+      desc: "Many companies list vacancies on LinkedIn. By following #{self.name} you will be alerted to any vacancies in your news feed as soon as they are advertised."
     },{
-      title: "Connect with hiring manager on LinkedIn",
+      title: "Connect with hiring manager at #{self.name} on LinkedIn",
       desc: "Many hiring managers will look for new employees from their networks before advertising a position. By connecting with the hiring manager, you increase your chances of being considered for unadvertised jobs."
     }]
     tasks.each do |task|
